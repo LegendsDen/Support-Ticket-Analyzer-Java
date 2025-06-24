@@ -1,0 +1,24 @@
+<configuration>
+
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name ="myFileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>logs/SupportTicket.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender" />
+    </root>
+
+    <logger name="com.support.analyzer.spring_server" level="INFO" additivity="false">
+        <appender-ref ref="myFileAppender" />
+    </logger>
+</configuration>

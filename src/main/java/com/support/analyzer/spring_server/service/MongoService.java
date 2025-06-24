@@ -7,6 +7,8 @@ import com.support.analyzer.spring_server.entity.TicketTriplet;
 import com.support.analyzer.spring_server.repository.SummarizedTicketRepository;
 import com.support.analyzer.spring_server.repository.SupportTicketRepository;
 import com.support.analyzer.spring_server.repository.TicketTripletRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.List;
 
 @Service
 public class MongoService {
+    private static final Logger log = LoggerFactory.getLogger(MongoService.class);
+
     private final SupportTicketRepository messageRepository;
     private final SummarizedTicketRepository summarizedTicketRepository;
     private final TicketTripletRepository ticketTripletRepository;

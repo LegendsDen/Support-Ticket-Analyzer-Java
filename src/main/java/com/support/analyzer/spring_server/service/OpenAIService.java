@@ -3,6 +3,9 @@ package com.support.analyzer.spring_server.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -10,12 +13,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 public class OpenAIService {
+    private static final Logger log = LoggerFactory.getLogger(OpenAIService.class);
+    @Value("${openai.api.uri}")
+    private String OpenAiUri;
+
     private WebClient openAiClient;
 
     @PostConstruct
     public void initClient() {
         this.openAiClient = WebClient.builder()
-                .baseUrl("http://prod0-intuitionx-llm-router-v2.sprinklr.com/chat-completion")
+                .baseUrl(OpenAiUri)
                 .defaultHeader("Content-Type", "application/json")
                 .build();
     }
@@ -46,7 +53,7 @@ public class OpenAIService {
                     .map(this::extractSummaryFromResponse)
                     .block();
         } catch (Exception e) {
-            System.err.println("OpenAI Error: " + e.getMessage());
+            log.error("OpenAI Error: " + e.getMessage());
             return null;
         }
     }
@@ -56,7 +63,7 @@ public class OpenAIService {
             JsonNode root = new ObjectMapper().readTree(response);
             return root.path("choices").get(0).path("message").path("content").asText();
         } catch (Exception e) {
-            System.err.println("Failed to parse OpenAI response: " + e.getMessage());
+            log.error("Failed to parse OpenAI response: " + e.getMessage());
             return null;
         }
     }

@@ -2,6 +2,8 @@ package com.support.analyzer.spring_server.service;
 
 import com.support.analyzer.spring_server.dto.FlaskEmbeddingResponse;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -11,8 +13,9 @@ import java.util.List;
 
 @Service
 public class EmbeddingService {
+    private static final Logger log = LoggerFactory.getLogger(EmbeddingService.class);
 
-    @Value("${flask.embedding.baseurl}")
+    @Value("${flask.baseurl}")
     private String flaskBaseUrl;
 
     private WebClient embeddingClient;
@@ -29,15 +32,15 @@ public class EmbeddingService {
             return embeddingClient.post()
                     .uri("/embed")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .bodyValue(new EmbedRequest(ticketId, message))
+                    .bodyValue(new EmbedRequest( message))
                     .retrieve()
                     .bodyToMono(FlaskEmbeddingResponse.class)
                     .map(FlaskEmbeddingResponse::getEmbedding)
                     .block();
         } catch (Exception e) {
-            System.err.println("Embedding Error: " + e.getMessage());
+            log.error("Embedding Error: " + e.getMessage());
             return null;
         }
     }
-    private record EmbedRequest(String ticketId, String message) {}
+    private record EmbedRequest(String message) {}
 }

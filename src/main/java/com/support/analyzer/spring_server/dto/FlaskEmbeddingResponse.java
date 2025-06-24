@@ -5,6 +5,5 @@ import java.util.List;
 
 @Data
 public class FlaskEmbeddingResponse {
-    private String ticketId;
     private List<Double> embedding;
 }

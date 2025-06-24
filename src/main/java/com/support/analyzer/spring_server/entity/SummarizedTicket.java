@@ -16,4 +16,9 @@ public class SummarizedTicket {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public SummarizedTicket(String ticketId, String summary) {
+        this.ticketId = ticketId;
+        this.summary = summary;
+    }
+
 }
