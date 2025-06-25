@@ -80,5 +80,7 @@ public class HealthCheck {
         }
     }
 
+
+
     private record EmbeddingRequest(String ticketId, String message) {}
 }

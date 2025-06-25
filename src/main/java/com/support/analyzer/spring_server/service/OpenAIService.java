@@ -10,10 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-
 @Service
 public class OpenAIService {
     private static final Logger log = LoggerFactory.getLogger(OpenAIService.class);
+
     @Value("${openai.api.uri}")
     private String OpenAiUri;
 
@@ -29,8 +29,25 @@ public class OpenAIService {
 
     public String summarizeMessages(String rawMessages) {
         try {
-            String prompt = "Give only issue in for following, : " + rawMessages;
+            String prompt = """
+            Summarize the following message while:
+            - Retain key technical issues, error messages, and problem descriptions
+            - Keep important context and steps to reproduce
+            - Remove greetings, signatures, and conversational phrases
+            - Format in clear, concise technical language
+            
+            Message: %s
+            """.formatted(rawMessages);
 
+            return generateResponse(prompt);
+        } catch (Exception e) {
+            log.error("OpenAI Summarization Error: {}", e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public String generateResponse(String prompt) {
+        try {
             String requestBody = """
                 {
                     "model": "gpt-4o",

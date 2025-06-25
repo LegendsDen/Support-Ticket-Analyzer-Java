@@ -83,6 +83,14 @@ public class MongoService {
                 throw new RuntimeException("Error saving ticket triplet: " + e.getMessage());
             }
      }
+    public SummarizedTicket getSummarizedTicketById(String ticketId) {
+        try {
+            return summarizedTicketRepository.findById(ticketId).orElse(null);
+        } catch (Exception e) {
+            log.error("Error getting summarized ticket {}: {}", ticketId, e.getMessage());
+            return null;
+        }
+    }
 
 
 }
