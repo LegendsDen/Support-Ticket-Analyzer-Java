@@ -2,6 +2,7 @@ package com.support.analyzer.spring_server.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.List;
 
 @Service
 public class OpenAIService {
@@ -45,6 +48,55 @@ public class OpenAIService {
             return null;
         }
     }
+    public ElasticsearchSimilarInference generateCompleteInference(String originalMessage, List<ElasticsearchSimilarInference> similarTriplets) {
+        try {
+            log.debug("Generating simple complete inference with {} similar triplets", similarTriplets.size());
+
+            // Join all similar triplets with issue\nrca\nsolution format
+            StringBuilder tripletContext = new StringBuilder();
+            tripletContext.append("Similar resolved support tickets:\n\n");
+
+            for (int i = 0; i < similarTriplets.size(); i++) {
+                ElasticsearchSimilarInference triplet = similarTriplets.get(i);
+                tripletContext.append(String.format("Ticket %d:\n", i + 1));
+                tripletContext.append("issue: ").append(triplet.getIssue()).append("\n");
+                tripletContext.append("rca: ").append(triplet.getRca()).append("\n");
+                tripletContext.append("solution: ").append(triplet.getSolution()).append("\n\n");
+            }
+
+            // Single comprehensive prompt
+            String comprehensivePrompt = "Based on the following original support ticket message and similar resolved tickets, " +
+                    "analyze and provide: issue identification, root cause analysis, and recommended solution. " +
+                    "Format your response as: Issue|RCA|Solution (separated by | character):\n\n" +
+                    "Original Message:\n" + originalMessage + "\n\n" + tripletContext.toString();
+
+            String response = generateResponse(comprehensivePrompt);
+
+            if (response == null || response.isBlank()) {
+                log.warn("Failed to generate comprehensive inference");
+                return null;
+            }
+
+            // Parse the pipe-separated response
+            String[] parts = response.trim().split("\\|");
+            if (parts.length >= 3) {
+                return new ElasticsearchSimilarInference(
+                        parts[1].trim(), // RCA
+                        parts[0].trim(), // Issue
+                        parts[2].trim()  // Solution
+                );
+            } else {
+                log.warn("Failed to parse comprehensive inference response: {}", response);
+                return null;
+            }
+
+        } catch (Exception e) {
+            log.error("Error generating simple complete inference: {}", e.getMessage());
+            return null;
+        }
+    }
+
+
 
     public String generateResponse(String prompt) {
         try {

@@ -5,7 +5,8 @@ import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.support.analyzer.spring_server.dto.EmbeddingDocument;
-import com.support.analyzer.spring_server.dto.SimilarTicket;
+import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
+import com.support.analyzer.spring_server.dto.ElasticsearchSimilarTicket;
 import com.support.analyzer.spring_server.dto.TripletWithEmbedding;
 import com.support.analyzer.spring_server.entity.TicketTriplet;
 import org.slf4j.Logger;
@@ -49,8 +50,6 @@ public class ElasticsearchService {
         }
     }
 
-
-
     public void indexTicketTripletWithEmbedding(TicketTriplet triplet, List<Double> issueEmbedding) {
         try {
             TripletWithEmbedding tripletWithEmbedding = new TripletWithEmbedding(
@@ -74,7 +73,7 @@ public class ElasticsearchService {
         }
     }
 
-    public List<SimilarTicket> findKNearestNeighbors(String ticketId, int k) {
+    public List<ElasticsearchSimilarTicket> findKNearestNeighbors(String ticketId, int k) {
         try {
             List<Double> targetEmbedding = getEmbeddingByTicketId(ticketId);
             if (targetEmbedding == null) {
@@ -104,7 +103,7 @@ public class ElasticsearchService {
                     .limit(k)
                     .map(hit -> {
                         String hitTicketId = hit.source() != null ? hit.source().getTicketId() : hit.id();
-                        return new SimilarTicket(hitTicketId, hit.score());
+                        return new ElasticsearchSimilarTicket(hitTicketId, hit.score());
                     })
                     .collect(Collectors.toList());
 
@@ -114,6 +113,71 @@ public class ElasticsearchService {
         }
     }
 
+    public List<ElasticsearchSimilarInference> findSimilarTriplets(List<Double> queryEmbedding, int k) {
+        try {
+            if (queryEmbedding == null || queryEmbedding.isEmpty()) {
+                log.warn("Query embedding is null or empty");
+                return Collections.emptyList();
+            }
+
+            // Convert to float array
+            List<Float> floatEmbedding = queryEmbedding.stream()
+                    .map(Double::floatValue)
+                    .collect(Collectors.toList());
+
+            SearchResponse<TripletWithEmbedding> response = elasticsearchClient.search(s -> s
+                            .index(tripletIndexName)
+                            .knn(knn -> knn
+                                    .field("issueEmbedding")
+                                    .queryVector(floatEmbedding)
+                                    .k((long) k)
+                                    .numCandidates(Math.max(100L, k * 10L))
+                            )
+                            .size(k)
+                    , TripletWithEmbedding.class);
+
+            return response.hits().hits().stream()
+                    .limit(k)
+                    .map(Hit::source)
+                    .filter(Objects::nonNull)
+                    .map(triplet -> new ElasticsearchSimilarInference(
+                            triplet.getRca(),
+                            triplet.getIssue(),
+                            triplet.getSolution()
+                    ))
+                    .collect(Collectors.toList());
+
+        } catch (Exception e) {
+            log.error("Error finding similar triplets: {}", e.getMessage(), e);
+            return Collections.emptyList();
+        }
+    }
+
+    public TripletWithEmbedding getTripletByTicketId(String ticketId) {
+        try {
+            SearchResponse<TripletWithEmbedding> response = elasticsearchClient.search(s -> s
+                            .index(tripletIndexName)
+                            .query(q -> q
+                                    .term(t -> t
+                                            .field("ticketId.keyword")
+                                            .value(ticketId)
+                                    )
+                            )
+                            .size(1)
+                    , TripletWithEmbedding.class);
+
+            if (response.hits().hits().isEmpty()) {
+                log.warn("No triplet found for ticketId: " + ticketId);
+                return null;
+            }
+
+            return response.hits().hits().get(0).source();
+
+        } catch (Exception e) {
+            log.error("Error getting triplet for ticket " + ticketId + ": " + e.getMessage(), e);
+            return null;
+        }
+    }
 
     private List<Double> getEmbeddingByTicketId(String ticketId) {
         try {

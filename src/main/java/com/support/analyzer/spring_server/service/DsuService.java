@@ -1,6 +1,6 @@
 package com.support.analyzer.spring_server.service;
 
-import com.support.analyzer.spring_server.dto.SimilarTicket;
+import com.support.analyzer.spring_server.dto.ElasticsearchSimilarTicket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,9 +121,9 @@ public class DsuService {
 
             for (String ticketId : allTicketIds) {
                 try {
-                    List<SimilarTicket> neighbors = elasticsearchService.findKNearestNeighbors(ticketId, k);
+                    List<ElasticsearchSimilarTicket> neighbors = elasticsearchService.findKNearestNeighbors(ticketId, k);
 
-                    for (    SimilarTicket neighbor : neighbors) {
+                    for (    ElasticsearchSimilarTicket neighbor : neighbors) {
                         if (neighbor.getSimilarity() >= SIMILARITY_THRESHOLD) {
                             // Check if they're already in the same cluster before union
                             if (!dsu.find(ticketId).equals(dsu.find(neighbor.getTicketId()))) {

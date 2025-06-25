@@ -37,6 +37,7 @@ public class MongoService {
 
          return messageRepository.findAll();
      }
+
      public SupportTicket getSupportTicketById(String id) {
          return messageRepository.findById(id).orElseThrow(() -> new RuntimeException("Ticket not found"));
      }

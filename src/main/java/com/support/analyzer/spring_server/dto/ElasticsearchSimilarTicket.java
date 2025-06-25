@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 
-public  class SimilarTicket {
+public  class ElasticsearchSimilarTicket {
     private final String ticketId;
     private final double similarity;
 }
