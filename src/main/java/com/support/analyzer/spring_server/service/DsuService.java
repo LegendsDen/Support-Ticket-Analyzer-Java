@@ -110,7 +110,7 @@ public class DsuService {
                 return Collections.emptyList();
             }
 
-            log.info("Found {} tickets to cluster", allTicketIds.size());
+            log.info("Found {} tickets to cluster", allTicketIds);
 
             // Initialize DSU
             DSU dsu = new DSU(allTicketIds);
@@ -122,14 +122,16 @@ public class DsuService {
             for (String ticketId : allTicketIds) {
                 try {
                     List<ElasticsearchSimilarTicket> neighbors = elasticsearchService.findKNearestNeighbors(ticketId, k);
+                    log.info("Processing ticket {} with {} neighbors", ticketId, neighbors.size());
 
                     for (    ElasticsearchSimilarTicket neighbor : neighbors) {
+                        log.info("Ticket {} is similar to {} with similarity {}", ticketId, neighbor.getTicketId(), neighbor.getSimilarity());
                         if (neighbor.getSimilarity() >= SIMILARITY_THRESHOLD) {
                             // Check if they're already in the same cluster before union
                             if (!dsu.find(ticketId).equals(dsu.find(neighbor.getTicketId()))) {
                                 dsu.union(ticketId, neighbor.getTicketId());
                                 unionsPerformed++;
-                                log.debug("United {} and {} with cosine similarity {}",
+                                log.info("United {} and {} with cosine similarity {}",
                                         ticketId, neighbor.getTicketId(), neighbor.getSimilarity());
                             }
                         }

@@ -29,7 +29,6 @@ public class MaskingService {
 
     public List<String> getMaskedMessages(String ticketId, List<String> messages) {
         try {
-            log.info("OpenAI Request Body" + messages);
 
             return maskingClient.post()
                     .uri("/mask")

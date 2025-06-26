@@ -159,7 +159,7 @@ public class ElasticsearchService {
                             .index(tripletIndexName)
                             .query(q -> q
                                     .term(t -> t
-                                            .field("ticketId.keyword")
+                                            .field("ticketId")
                                             .value(ticketId)
                                     )
                             )
@@ -185,7 +185,7 @@ public class ElasticsearchService {
                             .index(indexName)
                             .query(q -> q
                                     .term(t -> t
-                                            .field("ticketId.keyword") // Use .keyword for exact match
+                                            .field("ticketId") // Use .keyword for exact match
                                             .value(ticketId)
                                     )
                             )

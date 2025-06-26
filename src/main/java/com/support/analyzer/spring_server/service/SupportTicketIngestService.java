@@ -39,6 +39,7 @@ public class SupportTicketIngestService {
     }
 
     public void processAllTickets() {
+        long startTime = System.currentTimeMillis();
         List<SupportTicket> tickets = mongoService.getAllSupportTicket();
         List<String> allTicketIds = new ArrayList<>();
 
@@ -53,6 +54,8 @@ public class SupportTicketIngestService {
                             .map(msg -> msg.get_source().getMessage())
                             .collect(Collectors.toList());
 
+
+
                     List<String> maskedMessages = maskingService.getMaskedMessages(ticketId, rawMessages);
                     if (maskedMessages == null || maskedMessages.isEmpty()) {
                         log.info("Skipping ticket " + ticketId + ": masking failed or empty");
@@ -60,14 +63,16 @@ public class SupportTicketIngestService {
                     }
 
                     String joinedMasked = String.join("\n", maskedMessages);
+//                    log.info("Processing ticket " + ticketId + " with masked messages: " + joinedMasked);
 
                     String summary = openAIService.summarizeMessages(joinedMasked);
                     if (summary == null || summary.isBlank()) {
                         log.info("Skipping ticket " + ticketId + ": summary is blank");
                         continue;
                     }
+                    log.info("Generated summary for ticket " + ticketId + ": " + summary);
 
-                    mongoService.addSummarizeTicket(new SummarizedTicket(ticketId, summary));
+//                    mongoService.addSummarizeTicket(new SummarizedTicket(ticketId, summary));
 
                     List<Double> embedding = embeddingService.getEmbedding(ticketId, summary);
                     if (embedding == null || embedding.isEmpty()) {
@@ -77,16 +82,20 @@ public class SupportTicketIngestService {
 
                     elasticsearchService.indexEmbedding(ticketId, embedding);
 
+
                 } catch (Exception e) {
                     log.error("Error processing ticket " + ticket.getTicketId() + ": " + e.getMessage());
                 }
             }
 
             // Second phase: Build clusters and process representatives
-            List<String> representatives = dsuService.buildClustersAndGetRepresentatives(allTicketIds, 5);
+            List<String> representatives = dsuService.buildClustersAndGetRepresentatives(allTicketIds, 2);
             log.info("Found {} cluster representatives: {}", representatives.size(), representatives);
+            long duration= System.currentTimeMillis() - startTime;
+            log.info("Processed {} tickets in {} ms", allTicketIds.size(), duration);
 
-            // Third phase: Generate triplets for each representative
+
+//            // Third phase: Generate triplets for each representative
             int processedRepresentatives = 0;
             for (String representativeTicketId : representatives) {
                 try {
@@ -106,25 +115,26 @@ public class SupportTicketIngestService {
                     }
 
                     // Generate RCA, issue, and solution using OpenAI
-                    TicketTriplet triplet = generateTicketTriplet(representativeTicketId, summary);
+                    TicketTriplet triplet = openAIService.generateTicketTriplet(representativeTicketId, summary);
                     if (triplet == null) {
                         log.warn("Failed to generate triplet for ticket: {}", representativeTicketId);
                         continue;
                     }
+                    log.info("Generated triplet for ticket {}: RCA={}, Issue={}, Solution={}",
+                            representativeTicketId, triplet.getRca(), triplet.getIssue(), triplet.getSolution());
+                    log.info(System.currentTimeMillis()- startTime + " ms elapsed since start of processing");
 
-                    // Generate embedding for the issue
                     List<Double> issueEmbedding = embeddingService.getEmbedding(representativeTicketId, triplet.getIssue());
                     if (issueEmbedding == null || issueEmbedding.isEmpty()) {
                         log.warn("Failed to generate embedding for issue in ticket: {}", representativeTicketId);
-                        // Still save the triplet even without embedding
                     }
 
-                    // Store triplet in MongoDB
-                    mongoService.addTicketTriplet(triplet);
-
-                    // Store triplet and issue embedding in Elasticsearch
+//                    // Store triplet in MongoDB
+//                    mongoService.addTicketTriplet(triplet);
+//
+//                    // Store triplet and issue embedding in Elasticsearch
                     elasticsearchService.indexTicketTripletWithEmbedding(triplet, issueEmbedding);
-
+//
                     processedRepresentatives++;
                     log.info("Successfully processed representative {}/{}: {}",
                             processedRepresentatives, representatives.size(), representativeTicketId);
@@ -141,55 +151,5 @@ public class SupportTicketIngestService {
         }
     }
 
-    private TicketTriplet generateTicketTriplet(String ticketId, String summary) {
-        try {
-            log.debug("Generating triplet for ticket: {}", ticketId);
 
-            // Generate RCA (Root Cause Analysis)
-            String rcaPrompt = "Based on the following support ticket summary, identify the root cause analysis. " +
-                    "Provide only the root cause without additional explanation: " + summary;
-            String rca = openAIService.generateResponse(rcaPrompt);
-
-            if (rca == null || rca.isBlank()) {
-                log.warn("Failed to generate RCA for ticket: {}", ticketId);
-                return null;
-            }
-
-            // Generate Issue
-            String issuePrompt = "Based on the following support ticket summary, identify the main issue. " +
-                    "Provide only the issue description without additional explanation: " + summary;
-            String issue = openAIService.generateResponse(issuePrompt);
-
-            if (issue == null || issue.isBlank()) {
-                log.warn("Failed to generate issue for ticket: {}", ticketId);
-                return null;
-            }
-
-            // Generate Solution
-            String solutionPrompt = "Based on the following support ticket summary, provide the solution. " +
-                    "Provide only the solution without additional explanation: " + summary;
-            String solution = openAIService.generateResponse(solutionPrompt);
-
-            if (solution == null || solution.isBlank()) {
-                log.warn("Failed to generate solution for ticket: {}", ticketId);
-                return null;
-            }
-
-            // Create and return TicketTriplet
-            TicketTriplet triplet = new TicketTriplet();
-            triplet.setTicketId(ticketId);
-            triplet.setRca(rca.trim());
-            triplet.setIssue(issue.trim());
-            triplet.setSolution(solution.trim());
-
-            log.debug("Generated triplet for ticket {}: RCA={}, Issue={}, Solution={}",
-                    ticketId, rca.length(), issue.length(), solution.length());
-
-            return triplet;
-
-        } catch (Exception e) {
-            log.error("Error generating triplet for ticket {}: {}", ticketId, e.getMessage());
-            return null;
-        }
-    }
 }

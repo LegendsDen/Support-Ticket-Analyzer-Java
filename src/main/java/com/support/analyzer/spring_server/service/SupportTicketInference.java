@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class SupportTicketInference {
     private static final Logger log = LoggerFactory.getLogger(SupportTicketInference.class);
-    private static final int K_NEAREST_NEIGHBORS = 5;
+    private static final int K_NEAREST_NEIGHBORS = 3;
 
     private final MongoService mongoService;
     private final MaskingService maskingService;
@@ -58,6 +58,7 @@ public class SupportTicketInference {
 
             // Step 2: Mask sensitive information
             List<String> maskedMessages = maskingService.getMaskedMessages(ticketId, rawMessages);
+            log.info("Masked messages for ticket {}: {}", ticketId, maskedMessages);
             if (maskedMessages == null || maskedMessages.isEmpty()) {
                 log.warn("Masking failed or returned empty for ticket: {}", ticketId);
                 return null;
@@ -68,6 +69,7 @@ public class SupportTicketInference {
 
             // Step 3: Generate summary for embedding
             String summary = openAIService.summarizeMessages(joinedMasked);
+            log.info("Generated summary for ticket {}: {}", ticketId, summary);
             if (summary == null || summary.isBlank()) {
                 log.warn("Summary generation failed for ticket: {}", ticketId);
                 return null;
@@ -82,15 +84,19 @@ public class SupportTicketInference {
 
             // Step 5: Find k-nearest neighbors in triplets index
             List<ElasticsearchSimilarInference> similarTriplets = elasticsearchService.findSimilarTriplets(embedding, K_NEAREST_NEIGHBORS);
+            log.info("Found {} similar triplets for ticket: {}", similarTriplets, ticketId);
             if (similarTriplets.isEmpty()) {
                 log.warn("No similar triplets found for ticket: {}", ticketId);
                 return null;
             }
 
-            log.info("Found {} similar triplets for ticket: {}", similarTriplets.size(), ticketId);
+            log.info("Found {} similar triplets for ticket: {}", similarTriplets, ticketId);
 
             // Step 6: Generate complete inference using OpenAI with similar triplets context
             ElasticsearchSimilarInference inference = openAIService.generateCompleteInference(joinedMasked, similarTriplets);
+            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getIssue());
+            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getRca());
+            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getSolution());
 
             if (inference == null) {
                 log.warn("Failed to generate complete inference for ticket: {}", ticketId);

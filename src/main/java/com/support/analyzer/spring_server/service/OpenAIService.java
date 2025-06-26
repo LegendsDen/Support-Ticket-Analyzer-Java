@@ -3,6 +3,7 @@ package com.support.analyzer.spring_server.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
+import com.support.analyzer.spring_server.entity.TicketTriplet;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,14 +34,17 @@ public class OpenAIService {
     public String summarizeMessages(String rawMessages) {
         try {
             String prompt = """
-            Summarize the following message while:
-            - Retain key technical issues, error messages, and problem descriptions
-            - Keep important context and steps to reproduce
-            - Remove greetings, signatures, and conversational phrases
-            - Format in clear, concise technical language
-            
-            Message: %s
-            """.formatted(rawMessages);
+        You are a technical support analyst. Summarize the following conversation logs into a single clear paragraph.
+
+        Guidelines:
+        - Capture key technical issues, error messages, and system behaviors.
+        - Include any important context or user actions that help identify the root cause.
+        - Exclude greetings, sign-offs, and irrelevant chit-chat.
+        - Write in concise, professional, and technical language suitable for internal ticket notes.
+
+        Conversation Logs:
+        %s
+        """.formatted(rawMessages);
 
             return generateResponse(prompt);
         } catch (Exception e) {
@@ -48,6 +52,7 @@ public class OpenAIService {
             return null;
         }
     }
+
     public ElasticsearchSimilarInference generateCompleteInference(String originalMessage, List<ElasticsearchSimilarInference> similarTriplets) {
         try {
             log.debug("Generating simple complete inference with {} similar triplets", similarTriplets.size());
@@ -67,10 +72,12 @@ public class OpenAIService {
             // Single comprehensive prompt
             String comprehensivePrompt = "Based on the following original support ticket message and similar resolved tickets, " +
                     "analyze and provide: issue identification, root cause analysis, and recommended solution. " +
-                    "Format your response as: Issue|RCA|Solution (separated by | character):\n\n" +
+                    "Format your response as: Issue|RCA|Solution (separated by | character):\n\n " +
+                    "Do NOT repeat the format or add any labels like \"Issue|RCA|Solution\"." +
                     "Original Message:\n" + originalMessage + "\n\n" + tripletContext.toString();
 
             String response = generateResponse(comprehensivePrompt);
+            log.info("Generated comprehensive inference response: {}", response);
 
             if (response == null || response.isBlank()) {
                 log.warn("Failed to generate comprehensive inference");
@@ -79,6 +86,7 @@ public class OpenAIService {
 
             // Parse the pipe-separated response
             String[] parts = response.trim().split("\\|");
+            log.info("Parsed inference response parts: {}", (Object) parts);
             if (parts.length >= 3) {
                 return new ElasticsearchSimilarInference(
                         parts[1].trim(), // RCA
@@ -92,6 +100,64 @@ public class OpenAIService {
 
         } catch (Exception e) {
             log.error("Error generating simple complete inference: {}", e.getMessage());
+            return null;
+        }
+    }
+    public TicketTriplet generateTicketTriplet(String ticketId, String summary) {
+        try {
+            log.debug("Generating triplet for ticket: {}", ticketId);
+
+            String rcaPrompt = """
+            Based on the following support ticket summary, identify the root cause analysis (RCA).
+            
+            - If no clear RCA is present in the summary, return: "rca not explicitly mentioned".
+            - Otherwise, return only the root cause without extra explanation.
+            
+            Summary:
+            %s
+            """.formatted(summary);
+
+            String rca = generateResponse(rcaPrompt);
+
+            if (rca == null || rca.isBlank()|| rca.toLowerCase().contains("rca not explicitly mentioned")) {
+                log.warn("Failed to generate RCA for ticket: {}", ticketId);
+                return null;
+            }
+
+            // Generate Issue
+            String issuePrompt = "Based on the following support ticket summary, identify the main issue. " +
+                    "Provide only the issue description without additional explanation: " + summary;
+            String issue = generateResponse(issuePrompt);
+
+            if (issue == null || issue.isBlank()) {
+                log.warn("Failed to generate issue for ticket: {}", ticketId);
+                return null;
+            }
+
+            // Generate Solution
+            String solutionPrompt = "Based on the following support ticket summary, provide the solution. " +
+                    "Provide only the solution without additional explanation: " + summary;
+            String solution = generateResponse(solutionPrompt);
+
+            if (solution == null || solution.isBlank()) {
+                log.warn("Failed to generate solution for ticket: {}", ticketId);
+                return null;
+            }
+
+            // Create and return TicketTriplet
+            TicketTriplet triplet = new TicketTriplet();
+            triplet.setTicketId(ticketId);
+            triplet.setRca(rca.trim());
+            triplet.setIssue(issue.trim());
+            triplet.setSolution(solution.trim());
+
+            log.debug("Generated triplet for ticket {}: RCA={}, Issue={}, Solution={}",
+                    ticketId, rca.length(), issue.length(), solution.length());
+
+            return triplet;
+
+        } catch (Exception e) {
+            log.error("Error generating triplet for ticket {}: {}", ticketId, e.getMessage());
             return null;
         }
     }
