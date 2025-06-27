@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 public class ElasticsearchService {
     private static final Logger log = LoggerFactory.getLogger(ElasticsearchService.class);
 
+
     private final ElasticsearchClient elasticsearchClient;
 
     @Value("${elasticsearch.deduplication.index}")

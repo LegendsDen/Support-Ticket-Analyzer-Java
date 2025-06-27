@@ -109,9 +109,7 @@ public class OpenAIService {
 
             String rcaPrompt = """
             Based on the following support ticket summary, identify the root cause analysis (RCA).
-            
-            - If no clear RCA is present in the summary, return: "rca not explicitly mentioned".
-            - Otherwise, return only the root cause without extra explanation.
+            -  return only the root cause without extra explanation.
             
             Summary:
             %s
@@ -119,7 +117,7 @@ public class OpenAIService {
 
             String rca = generateResponse(rcaPrompt);
 
-            if (rca == null || rca.isBlank()|| rca.toLowerCase().contains("rca not explicitly mentioned")) {
+            if (rca == null || rca.isBlank()) {
                 log.warn("Failed to generate RCA for ticket: {}", ticketId);
                 return null;
             }

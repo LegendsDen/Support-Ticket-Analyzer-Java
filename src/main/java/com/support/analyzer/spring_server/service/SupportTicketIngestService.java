@@ -72,7 +72,7 @@ public class SupportTicketIngestService {
                     }
                     log.info("Generated summary for ticket " + ticketId + ": " + summary);
 
-//                    mongoService.addSummarizeTicket(new SummarizedTicket(ticketId, summary));
+                    mongoService.addSummarizeTicket(new SummarizedTicket(ticketId, summary));
 
                     List<Double> embedding = embeddingService.getEmbedding(ticketId, summary);
                     if (embedding == null || embedding.isEmpty()) {
@@ -89,7 +89,7 @@ public class SupportTicketIngestService {
             }
 
             // Second phase: Build clusters and process representatives
-            List<String> representatives = dsuService.buildClustersAndGetRepresentatives(allTicketIds, 2);
+            List<String> representatives = dsuService.buildClustersAndGetRepresentatives(allTicketIds, 5);
             log.info("Found {} cluster representatives: {}", representatives.size(), representatives);
             long duration= System.currentTimeMillis() - startTime;
             log.info("Processed {} tickets in {} ms", allTicketIds.size(), duration);
@@ -129,12 +129,12 @@ public class SupportTicketIngestService {
                         log.warn("Failed to generate embedding for issue in ticket: {}", representativeTicketId);
                     }
 
-//                    // Store triplet in MongoDB
-//                    mongoService.addTicketTriplet(triplet);
-//
-//                    // Store triplet and issue embedding in Elasticsearch
+
+                    mongoService.addTicketTriplet(triplet);
+
+
                     elasticsearchService.indexTicketTripletWithEmbedding(triplet, issueEmbedding);
-//
+
                     processedRepresentatives++;
                     log.info("Successfully processed representative {}/{}: {}",
                             processedRepresentatives, representatives.size(), representativeTicketId);

@@ -22,9 +22,7 @@ public class DsuService {
 
     }
 
-    /**
-     * Disjoint Set Union data structure for clustering using Union by Size
-     */
+
     private static class DSU {
         private Map<String, String> parent;
         private Map<String, Integer> size;
@@ -97,9 +95,7 @@ public class DsuService {
         }
     }
 
-    /**
-     * Build clusters using DSU based on cosine similarity threshold
-     */
+
     public List<String> buildClustersAndGetRepresentatives(List<String>allTicketIds,int k) {
         try {
             log.info("Starting clustering process with k={} and similarity threshold={}", k, SIMILARITY_THRESHOLD);

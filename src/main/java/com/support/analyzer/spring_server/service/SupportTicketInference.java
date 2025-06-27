@@ -1,21 +1,21 @@
 package com.support.analyzer.spring_server.service;
 
 import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
-import com.support.analyzer.spring_server.dto.TripletWithEmbedding;
-import com.support.analyzer.spring_server.entity.SupportTicket;
-import com.support.analyzer.spring_server.entity.TicketTriplet;
+import com.support.analyzer.spring_server.entity.NewSupportTicket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+
+
 
 @Service
 public class SupportTicketInference {
     private static final Logger log = LoggerFactory.getLogger(SupportTicketInference.class);
-    private static final int K_NEAREST_NEIGHBORS = 3;
+    private static final int K_NEAREST_NEIGHBORS = 5;
 
     private final MongoService mongoService;
     private final MaskingService maskingService;
@@ -33,15 +33,14 @@ public class SupportTicketInference {
         this.maskingService = maskingService;
         this.openAIService = openAIService;
         this.embeddingService = embeddingService;
-        this.elasticsearchService = elasticsearchService;
-    }
+        this.elasticsearchService = elasticsearchService;}
 
     public ElasticsearchSimilarInference inferSupportTicket(String ticketId) {
         try {
             log.info("Starting inference for ticket: {}", ticketId);
 
             // Step 1: Get the support ticket and process messages
-            SupportTicket ticket = mongoService.getSupportTicketById(ticketId);
+            NewSupportTicket ticket = mongoService.getNewSupportTicketById(ticketId);
             if (ticket == null) {
                 log.warn("Ticket not found: {}", ticketId);
                 return null;
@@ -94,9 +93,7 @@ public class SupportTicketInference {
 
             // Step 6: Generate complete inference using OpenAI with similar triplets context
             ElasticsearchSimilarInference inference = openAIService.generateCompleteInference(joinedMasked, similarTriplets);
-            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getIssue());
-            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getRca());
-            log.info("Generated complete inference for ticket {}: {}", ticketId, inference.getSolution());
+
 
             if (inference == null) {
                 log.warn("Failed to generate complete inference for ticket: {}", ticketId);
