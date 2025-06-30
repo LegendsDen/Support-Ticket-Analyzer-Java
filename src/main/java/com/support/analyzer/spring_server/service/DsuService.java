@@ -153,7 +153,7 @@ public class DsuService {
             return representatives;
 
         } catch (Exception e) {
-            log.error("Error in clustering process: " + e.getMessage(), e);
+            log.error("Error in clustering process: " + e, e);
             return Collections.emptyList();
         }
     }

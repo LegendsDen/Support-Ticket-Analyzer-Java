@@ -1,6 +1,7 @@
 package com.support.analyzer.spring_server.controller;
 
 import com.support.analyzer.spring_server.entity.Message;
+import com.support.analyzer.spring_server.entity.NewSupportTicket;
 import com.support.analyzer.spring_server.entity.SupportTicket;
 import com.support.analyzer.spring_server.service.MongoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ public class MessageController {
     private MongoService mongoService;
 
     @PostMapping("/ticket")
-    public ResponseEntity<SupportTicket> saveSupportTicket(@RequestBody SupportTicket supportTicket) {
+    public ResponseEntity<NewSupportTicket> saveSupportTicket(@RequestBody  NewSupportTicket supportTicket) {
         try{
-            SupportTicket savedSupportTicket = mongoService.addSupportTicket(supportTicket);
+            NewSupportTicket savedSupportTicket = mongoService.addNewSupportTicket(supportTicket);
             return ResponseEntity.ok(savedSupportTicket);
         }
         catch (Exception e) {

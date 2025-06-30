@@ -1,18 +1,17 @@
 package com.support.analyzer.spring_server.controller;
 
-import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
+import com.support.analyzer.spring_server.entity.TicketTriplet;
 import com.support.analyzer.spring_server.service.SupportTicketInference;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/inference")
 public class SupportTicketInferenceController {
     private static final Logger log = LoggerFactory.getLogger(SupportTicketInferenceController.class);
 
@@ -24,7 +23,7 @@ public class SupportTicketInferenceController {
         try {
             log.info("Generating inference for ticket: {}", ticketId);
 
-            ElasticsearchSimilarInference inference = supportTicketInference.inferSupportTicket(ticketId);
+            TicketTriplet inference = supportTicketInference.inferSupportTicket(ticketId);
 
             if (inference == null) {
                 log.warn("Failed to generate inference for ticket: {}", ticketId);
@@ -48,15 +47,15 @@ public class SupportTicketInferenceController {
             log.error("Runtime error generating inference for ticket {}: {}", ticketId, e.getMessage());
             return ResponseEntity.status(500).body(new InferenceResponse(
                     "error",
-                    "Internal error: " + e.getMessage(),
+                    "Internal error: " + e,
                     ticketId,
                     null
             ));
         } catch (Exception e) {
-            log.error("Unexpected error generating inference for ticket {}: {}", ticketId, e.getMessage(), e);
+            log.error("Unexpected error generating inference for ticket {}: {}", ticketId, e, e);
             return ResponseEntity.status(500).body(new InferenceResponse(
                     "error",
-                    "Unexpected error occurred: " + e.getMessage(),
+                    "Unexpected error occurred: " + e,
                     ticketId,
                     null
             ));
@@ -68,12 +67,12 @@ public class SupportTicketInferenceController {
         private String status;
         private String message;
         private String ticketId;
-        private ElasticsearchSimilarInference inference;
+        private TicketTriplet inference;
 
         public InferenceResponse() {
         }
 
-        public InferenceResponse(String status, String message, String ticketId, ElasticsearchSimilarInference inference) {
+        public InferenceResponse(String status, String message, String ticketId, TicketTriplet inference) {
             this.status = status;
             this.message = message;
             this.ticketId = ticketId;

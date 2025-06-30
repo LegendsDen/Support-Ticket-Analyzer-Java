@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/ingest")
 public class SupportTicketIngestController {
     private static final Logger log = LoggerFactory.getLogger(SupportTicketIngestController.class);
 
     @Autowired
     private SupportTicketIngestService supportTicketIngestService;
 
-    @PostMapping("/process-all-tickets")
+    @PostMapping("/ingest")
     public ResponseEntity<Map<String, String>> processAllTickets() {
         try {
             log.info("Starting bulk ticket processing...");
@@ -26,7 +25,7 @@ public class SupportTicketIngestController {
                     supportTicketIngestService.processAllTickets();
                     log.info("Tickets processing completed successfully");
                 } catch (Exception e) {
-                    log.error("Error during bulk ticket processing: {}", e.getMessage(), e);
+                    log.error("Error during bulk ticket processing: {}", e, e);
                 }
             return ResponseEntity.ok(Map.of(
                     "status", "processing_started",
@@ -34,10 +33,10 @@ public class SupportTicketIngestController {
             ));
 
         } catch (Exception e) {
-            log.error("Error starting ticket processing: {}", e.getMessage(), e);
+            log.error("Error starting ticket processing: {}", e, e);
             return ResponseEntity.status(500).body(Map.of(
                     "status", "error",
-                    "message", "Failed to start ticket processing: " + e.getMessage()
+                    "message", "Failed to start ticket processing: " + e
             ));
         }
     }

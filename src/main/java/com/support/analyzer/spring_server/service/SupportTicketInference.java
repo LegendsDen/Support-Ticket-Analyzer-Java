@@ -2,10 +2,12 @@ package com.support.analyzer.spring_server.service;
 
 import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
 import com.support.analyzer.spring_server.entity.NewSupportTicket;
+import com.support.analyzer.spring_server.entity.TicketTriplet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +37,7 @@ public class SupportTicketInference {
         this.embeddingService = embeddingService;
         this.elasticsearchService = elasticsearchService;}
 
-    public ElasticsearchSimilarInference inferSupportTicket(String ticketId) {
+    public TicketTriplet inferSupportTicket(String ticketId) {
         try {
             log.info("Starting inference for ticket: {}", ticketId);
 
@@ -54,14 +56,15 @@ public class SupportTicketInference {
                 log.warn("No messages found for ticket: {}", ticketId);
                 return null;
             }
+            log.info("Raw messages for ticket {}: {}", ticketId, rawMessages);
 
             // Step 2: Mask sensitive information
             List<String> maskedMessages = maskingService.getMaskedMessages(ticketId, rawMessages);
-            log.info("Masked messages for ticket {}: {}", ticketId, maskedMessages);
             if (maskedMessages == null || maskedMessages.isEmpty()) {
                 log.warn("Masking failed or returned empty for ticket: {}", ticketId);
                 return null;
             }
+            log.info("Masked messages for ticket {}: {}", ticketId, maskedMessages);
 
             String joinedMasked = String.join("\n", maskedMessages);
             log.debug("Masked messages for ticket {}: {}", ticketId, joinedMasked);
@@ -80,6 +83,7 @@ public class SupportTicketInference {
                 log.warn("Embedding generation failed for ticket: {}", ticketId);
                 return null;
             }
+            log.info("Generated embedding for ticket {}: {}", ticketId, embedding);
 
             // Step 5: Find k-nearest neighbors in triplets index
             List<ElasticsearchSimilarInference> similarTriplets = elasticsearchService.findSimilarTriplets(embedding, K_NEAREST_NEIGHBORS);
@@ -92,7 +96,11 @@ public class SupportTicketInference {
             log.info("Found {} similar triplets for ticket: {}", similarTriplets, ticketId);
 
             // Step 6: Generate complete inference using OpenAI with similar triplets context
-            ElasticsearchSimilarInference inference = openAIService.generateCompleteInference(joinedMasked, similarTriplets);
+            TicketTriplet inference = openAIService.generateCompleteInference(ticketId,joinedMasked, similarTriplets);
+            mongoService.addTicketTriplet(inference);
+            mongoService.finalFlush();
+
+
 
 
             if (inference == null) {
@@ -104,8 +112,8 @@ public class SupportTicketInference {
             return inference;
 
         } catch (Exception e) {
-            log.error("Error during inference for ticket {}: {}", ticketId, e.getMessage(), e);
-            throw new RuntimeException("Failed to infer support ticket: " + e.getMessage(), e);
+            log.error("Error during inference for ticket {}: {}", ticketId, e, e);
+            throw new RuntimeException("Failed to infer support ticket: " + e, e);
         }
     }
 
