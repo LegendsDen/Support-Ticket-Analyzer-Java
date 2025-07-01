@@ -3,6 +3,7 @@ package com.support.analyzer.spring_server.service;
 import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
 import com.support.analyzer.spring_server.entity.NewSupportTicket;
 import com.support.analyzer.spring_server.entity.TicketTriplet;
+import com.support.analyzer.spring_server.dto.TicketTripletWithDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class SupportTicketInference {
         this.embeddingService = embeddingService;
         this.elasticsearchService = elasticsearchService;}
 
-    public TicketTriplet inferSupportTicket(String ticketId) {
+    public TicketTripletWithDetails inferSupportTicket(String ticketId) {
         try {
             log.info("Starting inference for ticket: {}", ticketId);
 
@@ -100,16 +101,18 @@ public class SupportTicketInference {
             mongoService.addTicketTriplet(inference);
             mongoService.finalFlush();
 
-
-
-
+            TicketTripletWithDetails enhancedInference = new TicketTripletWithDetails(
+                    inference,
+                    joinedMasked,
+                    summary
+            );
             if (inference == null) {
                 log.warn("Failed to generate complete inference for ticket: {}", ticketId);
                 return null;
             }
 
             log.info("Successfully generated inference for ticket: {}", ticketId);
-            return inference;
+            return enhancedInference;
 
         } catch (Exception e) {
             log.error("Error during inference for ticket {}: {}", ticketId, e, e);

@@ -1,6 +1,8 @@
 package com.support.analyzer.spring_server.controller;
 
-import com.support.analyzer.spring_server.entity.TicketTriplet;
+
+
+import com.support.analyzer.spring_server.dto.TicketTripletWithDetails;
 import com.support.analyzer.spring_server.service.SupportTicketInference;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -23,9 +25,9 @@ public class SupportTicketInferenceController {
         try {
             log.info("Generating inference for ticket: {}", ticketId);
 
-            TicketTriplet inference = supportTicketInference.inferSupportTicket(ticketId);
+            TicketTripletWithDetails enhancedInference = supportTicketInference.inferSupportTicket(ticketId);
 
-            if (inference == null) {
+            if (enhancedInference == null) {
                 log.warn("Failed to generate inference for ticket: {}", ticketId);
                 return ResponseEntity.status(404).body(new InferenceResponse(
                         "error",
@@ -40,7 +42,7 @@ public class SupportTicketInferenceController {
                     "success",
                     "Inference generated successfully",
                     ticketId,
-                    inference
+                    enhancedInference
             ));
 
         } catch (RuntimeException e) {
@@ -67,12 +69,12 @@ public class SupportTicketInferenceController {
         private String status;
         private String message;
         private String ticketId;
-        private TicketTriplet inference;
+        private TicketTripletWithDetails inference;
 
         public InferenceResponse() {
         }
 
-        public InferenceResponse(String status, String message, String ticketId, TicketTriplet inference) {
+        public InferenceResponse(String status, String message, String ticketId, TicketTripletWithDetails inference) {
             this.status = status;
             this.message = message;
             this.ticketId = ticketId;
