@@ -1,6 +1,8 @@
 package com.support.analyzer.spring_server.service;
 
 import com.support.analyzer.spring_server.dto.FlaskMaskedResponse;
+import com.support.analyzer.spring_server.dto.FlaskMaskedResponseItem;
+import com.support.analyzer.spring_server.dto.MaskBatchRequest;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +46,24 @@ public class MaskingService {
             return null;
         }
     }
+    public List<FlaskMaskedResponseItem> getMaskedMessagesBatch(List<MaskBatchRequest.MaskItem> batch) {
+        try {
+           log.info("Batch masking request for {} items", batch.size());
+
+            return maskingClient.post()
+                    .uri("/mask_batch")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(new MaskBatchRequest(batch))
+                    .retrieve()
+                    .bodyToFlux(FlaskMaskedResponseItem.class)
+                    .collectList()
+                    .block();
+        } catch (Exception e) {
+            log.error("Batch masking error: {}", e.getMessage());
+            return List.of();
+        }
+    }
+
 
     private record MaskRequest(List<String> messages) {}
 }

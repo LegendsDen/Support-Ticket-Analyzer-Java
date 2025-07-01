@@ -15,9 +15,9 @@ public class MessageController {
     private MongoService mongoService;
 
     @PostMapping("/ticket")
-    public ResponseEntity<NewSupportTicket> saveSupportTicket(@RequestBody  NewSupportTicket supportTicket) {
+    public ResponseEntity<SupportTicket> saveSupportTicket(@RequestBody  SupportTicket supportTicket) {
         try{
-            NewSupportTicket savedSupportTicket = mongoService.addNewSupportTicket(supportTicket);
+            SupportTicket savedSupportTicket = mongoService.addSupportTicket(supportTicket);
             return ResponseEntity.ok(savedSupportTicket);
         }
         catch (Exception e) {

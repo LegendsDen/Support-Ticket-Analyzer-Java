@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ElasticsearchSimilarInference {
-    private String rca;
-    private String issue;
-    private String solution;
+public class FlaskMaskedResponseItem {
+    private String ticketId;
+    private List<String> maskedMessages;
 }

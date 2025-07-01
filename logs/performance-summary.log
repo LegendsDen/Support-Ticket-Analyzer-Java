@@ -1,0 +1,4164 @@
+2025-07-01 16:27:15.848 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13012ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_24:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_23:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_22:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_21:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_25:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 4587ms
+      Count: 1
+      Average: 4587ms
+    embeddingService_batch:
+      Total: 1211ms
+      Count: 1
+      Average: 1211ms
+    maskingService_batch:
+      Total: 7213ms
+      Count: 1
+      Average: 7213ms
+    prepareEmbedItems:
+      Total: 4588ms
+      Count: 1
+      Average: 4588ms
+
+2025-07-01 16:27:15.852 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13016ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_13:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_12:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_11:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_15:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_14:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5298ms
+      Count: 1
+      Average: 5298ms
+    embeddingService_batch:
+      Total: 629ms
+      Count: 1
+      Average: 629ms
+    maskingService_batch:
+      Total: 7087ms
+      Count: 1
+      Average: 7087ms
+    prepareEmbedItems:
+      Total: 5299ms
+      Count: 1
+      Average: 5299ms
+
+2025-07-01 16:27:17.158 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14322ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_10:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6760ms
+      Count: 1
+      Average: 6760ms
+    mongoService_addSummarize_9:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 401ms
+      Count: 1
+      Average: 401ms
+    mongoService_addSummarize_6:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_7:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_8:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 7160ms
+      Count: 1
+      Average: 7160ms
+    prepareEmbedItems:
+      Total: 6761ms
+      Count: 1
+      Average: 6761ms
+
+2025-07-01 16:27:17.478 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14642ms
+  Operations:
+    mongoService_addSummarize_19:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_18:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_17:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_16:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6996ms
+      Count: 1
+      Average: 6996ms
+    mongoService_addSummarize_20:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 403ms
+      Count: 1
+      Average: 403ms
+    maskingService_batch:
+      Total: 7241ms
+      Count: 1
+      Average: 7241ms
+    prepareEmbedItems:
+      Total: 6997ms
+      Count: 1
+      Average: 6997ms
+
+2025-07-01 16:27:21.208 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 18372ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    openAIService_batchSummarize:
+      Total: 6857ms
+      Count: 1
+      Average: 6857ms
+    embeddingService_batch:
+      Total: 536ms
+      Count: 1
+      Average: 536ms
+    mongoService_addSummarize_5:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_1:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_2:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_3:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 10976ms
+      Count: 1
+      Average: 10976ms
+    mongoService_addSummarize_4:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareEmbedItems:
+      Total: 6859ms
+      Count: 1
+      Average: 6859ms
+
+2025-07-01 16:27:29.367 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13515ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_35:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_34:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_38:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_37:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_36:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6058ms
+      Count: 1
+      Average: 6058ms
+    embeddingService_batch:
+      Total: 1244ms
+      Count: 1
+      Average: 1244ms
+    maskingService_batch:
+      Total: 6211ms
+      Count: 1
+      Average: 6211ms
+    prepareEmbedItems:
+      Total: 6059ms
+      Count: 1
+      Average: 6059ms
+
+2025-07-01 16:27:32.899 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 11690ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_49:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6068ms
+      Count: 1
+      Average: 6068ms
+    mongoService_addSummarize_53:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_52:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 169ms
+      Count: 1
+      Average: 169ms
+    mongoService_addSummarize_51:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_50:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5452ms
+      Count: 1
+      Average: 5452ms
+    prepareEmbedItems:
+      Total: 6068ms
+      Count: 1
+      Average: 6068ms
+
+2025-07-01 16:27:34.102 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16944ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_43:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_39:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 8694ms
+      Count: 1
+      Average: 8694ms
+    mongoService_addSummarize_42:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_41:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 246ms
+      Count: 1
+      Average: 246ms
+    mongoService_addSummarize_40:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8002ms
+      Count: 1
+      Average: 8002ms
+    prepareEmbedItems:
+      Total: 8694ms
+      Count: 1
+      Average: 8694ms
+
+2025-07-01 16:27:36.978 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 7609ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_57:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_56:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_55:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_54:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_58:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 4927ms
+      Count: 1
+      Average: 4927ms
+    embeddingService_batch:
+      Total: 152ms
+      Count: 1
+      Average: 152ms
+    maskingService_batch:
+      Total: 2529ms
+      Count: 1
+      Average: 2529ms
+    prepareEmbedItems:
+      Total: 4927ms
+      Count: 1
+      Average: 4927ms
+
+2025-07-01 16:27:38.877 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 23028ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 178ms
+      Count: 1
+      Average: 178ms
+    mongoService_addSummarize_33:
+      Total: 178ms
+      Count: 1
+      Average: 178ms
+    mongoService_addSummarize_32:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_28:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_26:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7333ms
+      Count: 1
+      Average: 7333ms
+    mongoService_addSummarize_30:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 159ms
+      Count: 1
+      Average: 159ms
+    maskingService_batch:
+      Total: 15355ms
+      Count: 1
+      Average: 15355ms
+    prepareEmbedItems:
+      Total: 7512ms
+      Count: 1
+      Average: 7512ms
+
+2025-07-01 16:27:40.828 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 23349ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_46:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_45:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_44:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_48:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_47:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 16008ms
+      Count: 1
+      Average: 16008ms
+    embeddingService_batch:
+      Total: 149ms
+      Count: 1
+      Average: 149ms
+    maskingService_batch:
+      Total: 7191ms
+      Count: 1
+      Average: 7191ms
+    prepareEmbedItems:
+      Total: 16008ms
+      Count: 1
+      Average: 16008ms
+
+2025-07-01 16:27:41.706 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 7603ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_68:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_67:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_66:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_65:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5388ms
+      Count: 1
+      Average: 5388ms
+    mongoService_addSummarize_64:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 375ms
+      Count: 1
+      Average: 375ms
+    maskingService_batch:
+      Total: 1838ms
+      Count: 1
+      Average: 1838ms
+    prepareEmbedItems:
+      Total: 5389ms
+      Count: 1
+      Average: 5389ms
+
+2025-07-01 16:27:41.719 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 8820ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_59:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_60:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6736ms
+      Count: 1
+      Average: 6736ms
+    mongoService_addSummarize_63:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 388ms
+      Count: 1
+      Average: 388ms
+    mongoService_addSummarize_62:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_61:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 1694ms
+      Count: 1
+      Average: 1694ms
+    prepareEmbedItems:
+      Total: 6737ms
+      Count: 1
+      Average: 6737ms
+
+2025-07-01 16:27:44.700 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 7722ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_69:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_71:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_70:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5900ms
+      Count: 1
+      Average: 5900ms
+    embeddingService_batch:
+      Total: 356ms
+      Count: 1
+      Average: 356ms
+    mongoService_addSummarize_73:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_72:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 1464ms
+      Count: 1
+      Average: 1464ms
+    prepareEmbedItems:
+      Total: 5900ms
+      Count: 1
+      Average: 5900ms
+
+2025-07-01 16:27:46.746 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 7869ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_78:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_77:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_76:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5977ms
+      Count: 1
+      Average: 5977ms
+    mongoService_addSummarize_75:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_74:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 355ms
+      Count: 1
+      Average: 355ms
+    maskingService_batch:
+      Total: 1535ms
+      Count: 1
+      Average: 1535ms
+    prepareEmbedItems:
+      Total: 5978ms
+      Count: 1
+      Average: 5978ms
+
+2025-07-01 16:27:54.541 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12835ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_88:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_87:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7542ms
+      Count: 1
+      Average: 7542ms
+    mongoService_addSummarize_86:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_85:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 647ms
+      Count: 1
+      Average: 647ms
+    mongoService_addSummarize_84:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 4644ms
+      Count: 1
+      Average: 4644ms
+    prepareEmbedItems:
+      Total: 7543ms
+      Count: 1
+      Average: 7543ms
+
+2025-07-01 16:27:54.545 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13716ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_79:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_82:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_81:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_80:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 9435ms
+      Count: 1
+      Average: 9435ms
+    embeddingService_batch:
+      Total: 842ms
+      Count: 1
+      Average: 842ms
+    mongoService_addSummarize_83:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 3436ms
+      Count: 1
+      Average: 3436ms
+    prepareEmbedItems:
+      Total: 9437ms
+      Count: 1
+      Average: 9437ms
+
+2025-07-01 16:27:54.553 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12833ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_89:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_93:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_92:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_91:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6683ms
+      Count: 1
+      Average: 6683ms
+    mongoService_addSummarize_90:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 1289ms
+      Count: 1
+      Average: 1289ms
+    maskingService_batch:
+      Total: 4859ms
+      Count: 1
+      Average: 4859ms
+    prepareEmbedItems:
+      Total: 6685ms
+      Count: 1
+      Average: 6685ms
+
+2025-07-01 16:27:55.977 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 9231ms
+  Operations:
+    mongoService_addSummarize_29:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_100:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_99:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_27:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5675ms
+      Count: 1
+      Average: 5675ms
+    mongoService_addSummarize_31:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 387ms
+      Count: 1
+      Average: 387ms
+    maskingService_batch:
+      Total: 3167ms
+      Count: 1
+      Average: 3167ms
+    prepareEmbedItems:
+      Total: 5676ms
+      Count: 1
+      Average: 5676ms
+
+2025-07-01 16:27:57.916 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13215ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 1416ms
+      Count: 1
+      Average: 1416ms
+    processResponsesAndSave:
+      Total: 217ms
+      Count: 1
+      Average: 217ms
+    mongoService_addSummarize_98:
+      Total: 217ms
+      Count: 1
+      Average: 217ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6768ms
+      Count: 1
+      Average: 6768ms
+    mongoService_addSummarize_97:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_96:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 451ms
+      Count: 1
+      Average: 451ms
+    mongoService_addSummarize_95:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_94:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 4361ms
+      Count: 1
+      Average: 4361ms
+    prepareEmbedItems:
+      Total: 6986ms
+      Count: 1
+      Average: 6986ms
+
+2025-07-01 16:28:08.795 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12817ms
+  Operations:
+    mongoService_addSummarize_116:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_118:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_117:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_119:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5268ms
+      Count: 1
+      Average: 5268ms
+    embeddingService_batch:
+      Total: 927ms
+      Count: 1
+      Average: 927ms
+    mongoService_addSummarize_120:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6619ms
+      Count: 1
+      Average: 6619ms
+    prepareEmbedItems:
+      Total: 5269ms
+      Count: 1
+      Average: 5269ms
+
+2025-07-01 16:28:08.803 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14257ms
+  Operations:
+    mongoService_addSummarize_107:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_106:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_109:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_108:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5224ms
+      Count: 1
+      Average: 5224ms
+    embeddingService_batch:
+      Total: 1634ms
+      Count: 1
+      Average: 1634ms
+    mongoService_addSummarize_110:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 7397ms
+      Count: 1
+      Average: 7397ms
+    prepareEmbedItems:
+      Total: 5225ms
+      Count: 1
+      Average: 5225ms
+
+2025-07-01 16:28:08.813 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14271ms
+  Operations:
+    mongoService_addSummarize_105:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_104:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_101:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_103:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_102:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6291ms
+      Count: 1
+      Average: 6291ms
+    embeddingService_batch:
+      Total: 817ms
+      Count: 1
+      Average: 817ms
+    maskingService_batch:
+      Total: 7161ms
+      Count: 1
+      Average: 7161ms
+    prepareEmbedItems:
+      Total: 6292ms
+      Count: 1
+      Average: 6292ms
+
+2025-07-01 16:28:11.511 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16957ms
+  Operations:
+    mongoService_addSummarize_115:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_112:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_111:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_114:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_113:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 9345ms
+      Count: 1
+      Average: 9345ms
+    embeddingService_batch:
+      Total: 167ms
+      Count: 1
+      Average: 167ms
+    maskingService_batch:
+      Total: 7442ms
+      Count: 1
+      Average: 7442ms
+    prepareEmbedItems:
+      Total: 9347ms
+      Count: 1
+      Average: 9347ms
+
+2025-07-01 16:30:12.571 PERF_SUMMARY - === MAIN THREAD PERFORMANCE STATS ===
+2025-07-01 16:30:12.573 PERF_SUMMARY - Performance Stats:
+  Total Duration: 190007ms
+  Operations:
+    phase1_prepareBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    phase3_tripletProcessing:
+      Total: 22853ms
+      Count: 1
+      Average: 22853ms
+    phase3_finalFlush:
+      Total: 726ms
+      Count: 1
+      Average: 726ms
+    phase1_finalFlush:
+      Total: 869ms
+      Count: 1
+      Average: 869ms
+    phase3_prepareTripletBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    getAllSupportTickets:
+      Total: 271ms
+      Count: 1
+      Average: 271ms
+    phase1_batchProcessing:
+      Total: 68676ms
+      Count: 1
+      Average: 68676ms
+    phase2_clustering:
+      Total: 96609ms
+      Count: 1
+      Average: 96609ms
+
+2025-07-01 16:30:12.573 PERF_SUMMARY - === SERVICE TIMING SUMMARY ===
+2025-07-01 16:30:12.573 PERF_SUMMARY - Phase 1 (Batch Processing): 68676ms
+2025-07-01 16:30:12.573 PERF_SUMMARY - Phase 2 (Clustering): 96609ms
+2025-07-01 16:30:12.573 PERF_SUMMARY - Phase 3 (Triplet Processing): 22853ms
+2025-07-01 16:30:12.573 PERF_SUMMARY - MongoDB getAllSupportTickets: 271ms
+2025-07-01 16:30:12.573 PERF_SUMMARY - Final flush operations: 1595ms
+2025-07-01 16:30:12.573 PERF_SUMMARY - === END PERFORMANCE STATS ===
+2025-07-01 16:30:34.211 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 15643ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_24:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 11ms
+      Count: 1
+      Average: 11ms
+    mongoService_addSummarize_23:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_22:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_21:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_25:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5974ms
+      Count: 1
+      Average: 5974ms
+    embeddingService_batch:
+      Total: 868ms
+      Count: 1
+      Average: 868ms
+    maskingService_batch:
+      Total: 8788ms
+      Count: 1
+      Average: 8788ms
+    prepareEmbedItems:
+      Total: 5986ms
+      Count: 1
+      Average: 5986ms
+
+2025-07-01 16:30:34.215 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 15646ms
+  Operations:
+    mongoService_addSummarize_19:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_18:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_17:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_16:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5487ms
+      Count: 1
+      Average: 5487ms
+    mongoService_addSummarize_20:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 1306ms
+      Count: 1
+      Average: 1306ms
+    maskingService_batch:
+      Total: 8851ms
+      Count: 1
+      Average: 8851ms
+    prepareEmbedItems:
+      Total: 5488ms
+      Count: 1
+      Average: 5488ms
+
+2025-07-01 16:30:34.224 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 15656ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_10:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5919ms
+      Count: 1
+      Average: 5919ms
+    mongoService_addSummarize_9:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 860ms
+      Count: 1
+      Average: 860ms
+    mongoService_addSummarize_6:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_7:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_8:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8874ms
+      Count: 1
+      Average: 8874ms
+    prepareEmbedItems:
+      Total: 5921ms
+      Count: 1
+      Average: 5921ms
+
+2025-07-01 16:30:35.788 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 17220ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_13:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_12:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_11:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_15:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_14:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7894ms
+      Count: 1
+      Average: 7894ms
+    embeddingService_batch:
+      Total: 483ms
+      Count: 1
+      Average: 483ms
+    maskingService_batch:
+      Total: 8840ms
+      Count: 1
+      Average: 8840ms
+    prepareEmbedItems:
+      Total: 7895ms
+      Count: 1
+      Average: 7895ms
+
+2025-07-01 16:30:38.337 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 19769ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6994ms
+      Count: 1
+      Average: 6994ms
+    embeddingService_batch:
+      Total: 474ms
+      Count: 1
+      Average: 474ms
+    mongoService_addSummarize_5:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_1:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_2:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_3:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 12298ms
+      Count: 1
+      Average: 12298ms
+    mongoService_addSummarize_4:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareEmbedItems:
+      Total: 6995ms
+      Count: 1
+      Average: 6995ms
+
+2025-07-01 16:30:49.964 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 15749ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_35:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_34:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_38:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_37:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_36:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5846ms
+      Count: 1
+      Average: 5846ms
+    embeddingService_batch:
+      Total: 1361ms
+      Count: 1
+      Average: 1361ms
+    maskingService_batch:
+      Total: 8539ms
+      Count: 1
+      Average: 8539ms
+    prepareEmbedItems:
+      Total: 5848ms
+      Count: 1
+      Average: 5848ms
+
+2025-07-01 16:30:50.043 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 15818ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_43:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_39:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6574ms
+      Count: 1
+      Average: 6574ms
+    mongoService_addSummarize_42:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_41:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 397ms
+      Count: 1
+      Average: 397ms
+    mongoService_addSummarize_40:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8845ms
+      Count: 1
+      Average: 8845ms
+    prepareEmbedItems:
+      Total: 6575ms
+      Count: 1
+      Average: 6575ms
+
+2025-07-01 16:30:52.313 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13975ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_49:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6525ms
+      Count: 1
+      Average: 6525ms
+    mongoService_addSummarize_53:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_52:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 627ms
+      Count: 1
+      Average: 627ms
+    mongoService_addSummarize_51:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_50:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6821ms
+      Count: 1
+      Average: 6821ms
+    prepareEmbedItems:
+      Total: 6526ms
+      Count: 1
+      Average: 6526ms
+
+2025-07-01 16:30:52.439 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16650ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_46:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_45:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_44:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_48:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_47:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7702ms
+      Count: 1
+      Average: 7702ms
+    embeddingService_batch:
+      Total: 637ms
+      Count: 1
+      Average: 637ms
+    maskingService_batch:
+      Total: 8309ms
+      Count: 1
+      Average: 8309ms
+    prepareEmbedItems:
+      Total: 7702ms
+      Count: 1
+      Average: 7702ms
+
+2025-07-01 16:30:59.289 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 25077ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 94ms
+      Count: 1
+      Average: 94ms
+    mongoService_addSummarize_33:
+      Total: 93ms
+      Count: 1
+      Average: 93ms
+    mongoService_addSummarize_32:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_28:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_26:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 2ms
+      Count: 1
+      Average: 2ms
+    openAIService_batchSummarize:
+      Total: 6140ms
+      Count: 1
+      Average: 6140ms
+    mongoService_addSummarize_30:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 1380ms
+      Count: 1
+      Average: 1380ms
+    maskingService_batch:
+      Total: 17459ms
+      Count: 1
+      Average: 17459ms
+    prepareEmbedItems:
+      Total: 6237ms
+      Count: 1
+      Average: 6237ms
+
+2025-07-01 16:31:03.119 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13153ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_57:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_56:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_55:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_54:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_58:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6144ms
+      Count: 1
+      Average: 6144ms
+    embeddingService_batch:
+      Total: 151ms
+      Count: 1
+      Average: 151ms
+    maskingService_batch:
+      Total: 6856ms
+      Count: 1
+      Average: 6856ms
+    prepareEmbedItems:
+      Total: 6144ms
+      Count: 1
+      Average: 6144ms
+
+2025-07-01 16:31:04.739 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12425ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_68:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_67:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_66:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_65:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5688ms
+      Count: 1
+      Average: 5688ms
+    mongoService_addSummarize_64:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 251ms
+      Count: 1
+      Average: 251ms
+    maskingService_batch:
+      Total: 6485ms
+      Count: 1
+      Average: 6485ms
+    prepareEmbedItems:
+      Total: 5689ms
+      Count: 1
+      Average: 5689ms
+
+2025-07-01 16:31:05.530 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13090ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_69:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_71:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_70:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6462ms
+      Count: 1
+      Average: 6462ms
+    embeddingService_batch:
+      Total: 240ms
+      Count: 1
+      Average: 240ms
+    mongoService_addSummarize_73:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_72:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6387ms
+      Count: 1
+      Average: 6387ms
+    prepareEmbedItems:
+      Total: 6463ms
+      Count: 1
+      Average: 6463ms
+
+2025-07-01 16:31:06.718 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16674ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_59:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_60:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 9713ms
+      Count: 1
+      Average: 9713ms
+    mongoService_addSummarize_63:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 405ms
+      Count: 1
+      Average: 405ms
+    mongoService_addSummarize_62:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_61:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6554ms
+      Count: 1
+      Average: 6554ms
+    prepareEmbedItems:
+      Total: 9714ms
+      Count: 1
+      Average: 9714ms
+
+2025-07-01 16:31:07.240 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 7950ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_78:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_77:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_76:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5830ms
+      Count: 1
+      Average: 5830ms
+    mongoService_addSummarize_75:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_74:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 398ms
+      Count: 1
+      Average: 398ms
+    maskingService_batch:
+      Total: 1721ms
+      Count: 1
+      Average: 1721ms
+    prepareEmbedItems:
+      Total: 5830ms
+      Count: 1
+      Average: 5830ms
+
+2025-07-01 16:31:11.785 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 8665ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_79:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_82:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_81:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_80:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6057ms
+      Count: 1
+      Average: 6057ms
+    embeddingService_batch:
+      Total: 535ms
+      Count: 1
+      Average: 535ms
+    mongoService_addSummarize_83:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 2071ms
+      Count: 1
+      Average: 2071ms
+    prepareEmbedItems:
+      Total: 6058ms
+      Count: 1
+      Average: 6058ms
+
+2025-07-01 16:31:18.713 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13182ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_89:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_93:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_92:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_91:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6340ms
+      Count: 1
+      Average: 6340ms
+    mongoService_addSummarize_90:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 404ms
+      Count: 1
+      Average: 404ms
+    maskingService_batch:
+      Total: 6436ms
+      Count: 1
+      Average: 6436ms
+    prepareEmbedItems:
+      Total: 6341ms
+      Count: 1
+      Average: 6341ms
+
+2025-07-01 16:31:18.717 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13978ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_88:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_87:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7284ms
+      Count: 1
+      Average: 7284ms
+    mongoService_addSummarize_86:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_85:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 1433ms
+      Count: 1
+      Average: 1433ms
+    mongoService_addSummarize_84:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5259ms
+      Count: 1
+      Average: 5259ms
+    prepareEmbedItems:
+      Total: 7285ms
+      Count: 1
+      Average: 7285ms
+
+2025-07-01 16:31:19.882 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13163ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_98:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5859ms
+      Count: 1
+      Average: 5859ms
+    mongoService_addSummarize_97:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_96:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 343ms
+      Count: 1
+      Average: 343ms
+    mongoService_addSummarize_95:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_94:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6960ms
+      Count: 1
+      Average: 6960ms
+    prepareEmbedItems:
+      Total: 5860ms
+      Count: 1
+      Average: 5860ms
+
+2025-07-01 16:31:23.536 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 11750ms
+  Operations:
+    mongoService_addSummarize_105:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_104:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_101:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_103:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_102:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7902ms
+      Count: 1
+      Average: 7902ms
+    embeddingService_batch:
+      Total: 629ms
+      Count: 1
+      Average: 629ms
+    maskingService_batch:
+      Total: 3217ms
+      Count: 1
+      Average: 3217ms
+    prepareEmbedItems:
+      Total: 7903ms
+      Count: 1
+      Average: 7903ms
+
+2025-07-01 16:31:24.381 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 17141ms
+  Operations:
+    mongoService_addSummarize_29:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_100:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 854ms
+      Count: 1
+      Average: 854ms
+    processResponsesAndSave:
+      Total: 84ms
+      Count: 1
+      Average: 84ms
+    mongoService_addSummarize_99:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_27:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 9299ms
+      Count: 1
+      Average: 9299ms
+    mongoService_addSummarize_31:
+      Total: 84ms
+      Count: 1
+      Average: 84ms
+    embeddingService_batch:
+      Total: 626ms
+      Count: 1
+      Average: 626ms
+    maskingService_batch:
+      Total: 6276ms
+      Count: 1
+      Average: 6276ms
+    prepareEmbedItems:
+      Total: 9384ms
+      Count: 1
+      Average: 9384ms
+
+2025-07-01 16:31:31.316 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12602ms
+  Operations:
+    mongoService_addSummarize_107:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_106:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_109:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_108:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5830ms
+      Count: 1
+      Average: 5830ms
+    embeddingService_batch:
+      Total: 1202ms
+      Count: 1
+      Average: 1202ms
+    mongoService_addSummarize_110:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5569ms
+      Count: 1
+      Average: 5569ms
+    prepareEmbedItems:
+      Total: 5831ms
+      Count: 1
+      Average: 5831ms
+
+2025-07-01 16:31:31.337 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12619ms
+  Operations:
+    mongoService_addSummarize_115:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_112:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_111:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_114:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_113:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6667ms
+      Count: 1
+      Average: 6667ms
+    embeddingService_batch:
+      Total: 228ms
+      Count: 1
+      Average: 228ms
+    maskingService_batch:
+      Total: 5723ms
+      Count: 1
+      Average: 5723ms
+    prepareEmbedItems:
+      Total: 6667ms
+      Count: 1
+      Average: 6667ms
+
+2025-07-01 16:31:32.945 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13062ms
+  Operations:
+    mongoService_addSummarize_116:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_118:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_117:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_119:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7660ms
+      Count: 1
+      Average: 7660ms
+    embeddingService_batch:
+      Total: 188ms
+      Count: 1
+      Average: 188ms
+    mongoService_addSummarize_120:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5212ms
+      Count: 1
+      Average: 5212ms
+    prepareEmbedItems:
+      Total: 7660ms
+      Count: 1
+      Average: 7660ms
+
+2025-07-01 16:33:05.399 PERF_SUMMARY - === MAIN THREAD PERFORMANCE STATS ===
+2025-07-01 16:33:05.401 PERF_SUMMARY - Performance Stats:
+  Total Duration: 167094ms
+  Operations:
+    phase1_prepareBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    phase3_tripletProcessing:
+      Total: 24596ms
+      Count: 1
+      Average: 24596ms
+    phase3_finalFlush:
+      Total: 886ms
+      Count: 1
+      Average: 886ms
+    phase1_finalFlush:
+      Total: 686ms
+      Count: 1
+      Average: 686ms
+    phase3_prepareTripletBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    getAllSupportTickets:
+      Total: 262ms
+      Count: 1
+      Average: 262ms
+    phase1_batchProcessing:
+      Total: 74377ms
+      Count: 1
+      Average: 74377ms
+    phase2_clustering:
+      Total: 66284ms
+      Count: 1
+      Average: 66284ms
+
+2025-07-01 16:33:05.401 PERF_SUMMARY - === SERVICE TIMING SUMMARY ===
+2025-07-01 16:33:05.401 PERF_SUMMARY - Phase 1 (Batch Processing): 74377ms
+2025-07-01 16:33:05.402 PERF_SUMMARY - Phase 2 (Clustering): 66284ms
+2025-07-01 16:33:05.402 PERF_SUMMARY - Phase 3 (Triplet Processing): 24596ms
+2025-07-01 16:33:05.402 PERF_SUMMARY - MongoDB getAllSupportTickets: 262ms
+2025-07-01 16:33:05.402 PERF_SUMMARY - Final flush operations: 1572ms
+2025-07-01 16:33:05.402 PERF_SUMMARY - === END PERFORMANCE STATS ===
+2025-07-01 16:34:03.195 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16272ms
+  Operations:
+    mongoService_addSummarize_19:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_18:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 3ms
+      Count: 1
+      Average: 3ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_17:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_16:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6517ms
+      Count: 1
+      Average: 6517ms
+    mongoService_addSummarize_20:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 771ms
+      Count: 1
+      Average: 771ms
+    maskingService_batch:
+      Total: 8977ms
+      Count: 1
+      Average: 8977ms
+    prepareEmbedItems:
+      Total: 6519ms
+      Count: 1
+      Average: 6519ms
+
+2025-07-01 16:34:03.195 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16272ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 3ms
+      Count: 1
+      Average: 3ms
+    mongoService_addSummarize_13:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_12:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_11:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_15:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_14:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5984ms
+      Count: 1
+      Average: 5984ms
+    embeddingService_batch:
+      Total: 1397ms
+      Count: 1
+      Average: 1397ms
+    maskingService_batch:
+      Total: 8884ms
+      Count: 1
+      Average: 8884ms
+    prepareEmbedItems:
+      Total: 5986ms
+      Count: 1
+      Average: 5986ms
+
+2025-07-01 16:34:03.203 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16280ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_24:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_23:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_22:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_21:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_25:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7060ms
+      Count: 1
+      Average: 7060ms
+    embeddingService_batch:
+      Total: 375ms
+      Count: 1
+      Average: 375ms
+    maskingService_batch:
+      Total: 8842ms
+      Count: 1
+      Average: 8842ms
+    prepareEmbedItems:
+      Total: 7062ms
+      Count: 1
+      Average: 7062ms
+
+2025-07-01 16:34:05.292 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 18369ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_10:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 8849ms
+      Count: 1
+      Average: 8849ms
+    mongoService_addSummarize_9:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 648ms
+      Count: 1
+      Average: 648ms
+    mongoService_addSummarize_6:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_7:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_8:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8868ms
+      Count: 1
+      Average: 8868ms
+    prepareEmbedItems:
+      Total: 8851ms
+      Count: 1
+      Average: 8851ms
+
+2025-07-01 16:34:07.248 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 20325ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    openAIService_batchSummarize:
+      Total: 7146ms
+      Count: 1
+      Average: 7146ms
+    embeddingService_batch:
+      Total: 692ms
+      Count: 1
+      Average: 692ms
+    mongoService_addSummarize_5:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_1:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_2:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_3:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 12481ms
+      Count: 1
+      Average: 12481ms
+    mongoService_addSummarize_4:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareEmbedItems:
+      Total: 7150ms
+      Count: 1
+      Average: 7150ms
+
+2025-07-01 16:34:22.770 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 19574ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_35:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_34:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_38:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_37:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_36:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    openAIService_batchSummarize:
+      Total: 6635ms
+      Count: 1
+      Average: 6635ms
+    embeddingService_batch:
+      Total: 1162ms
+      Count: 1
+      Average: 1162ms
+    maskingService_batch:
+      Total: 11774ms
+      Count: 1
+      Average: 11774ms
+    prepareEmbedItems:
+      Total: 6637ms
+      Count: 1
+      Average: 6637ms
+
+2025-07-01 16:34:23.267 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 17974ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_46:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_45:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_44:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_48:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_47:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6730ms
+      Count: 1
+      Average: 6730ms
+    embeddingService_batch:
+      Total: 240ms
+      Count: 1
+      Average: 240ms
+    maskingService_batch:
+      Total: 11002ms
+      Count: 1
+      Average: 11002ms
+    prepareEmbedItems:
+      Total: 6732ms
+      Count: 1
+      Average: 6732ms
+
+2025-07-01 16:34:23.824 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 20621ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_43:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_39:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 7752ms
+      Count: 1
+      Average: 7752ms
+    mongoService_addSummarize_42:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_41:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 494ms
+      Count: 1
+      Average: 494ms
+    mongoService_addSummarize_40:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 12372ms
+      Count: 1
+      Average: 12372ms
+    prepareEmbedItems:
+      Total: 7754ms
+      Count: 1
+      Average: 7754ms
+
+2025-07-01 16:34:23.892 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 16643ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_49:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6460ms
+      Count: 1
+      Average: 6460ms
+    mongoService_addSummarize_53:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_52:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 506ms
+      Count: 1
+      Average: 506ms
+    mongoService_addSummarize_51:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_50:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 9674ms
+      Count: 1
+      Average: 9674ms
+    prepareEmbedItems:
+      Total: 6462ms
+      Count: 1
+      Average: 6462ms
+
+2025-07-01 16:34:32.772 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 29577ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 173ms
+      Count: 1
+      Average: 173ms
+    mongoService_addSummarize_33:
+      Total: 172ms
+      Count: 1
+      Average: 172ms
+    mongoService_addSummarize_32:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_28:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_26:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    openAIService_batchSummarize:
+      Total: 10040ms
+      Count: 1
+      Average: 10040ms
+    mongoService_addSummarize_30:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 1128ms
+      Count: 1
+      Average: 1128ms
+    maskingService_batch:
+      Total: 18232ms
+      Count: 1
+      Average: 18232ms
+    prepareEmbedItems:
+      Total: 10215ms
+      Count: 1
+      Average: 10215ms
+
+2025-07-01 16:34:34.948 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 11680ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_59:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_60:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5922ms
+      Count: 1
+      Average: 5922ms
+    mongoService_addSummarize_63:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 241ms
+      Count: 1
+      Average: 241ms
+    mongoService_addSummarize_62:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_61:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5514ms
+      Count: 1
+      Average: 5514ms
+    prepareEmbedItems:
+      Total: 5924ms
+      Count: 1
+      Average: 5924ms
+
+2025-07-01 16:34:35.660 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 11835ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_68:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_67:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_66:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_65:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6047ms
+      Count: 1
+      Average: 6047ms
+    mongoService_addSummarize_64:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 296ms
+      Count: 1
+      Average: 296ms
+    maskingService_batch:
+      Total: 5489ms
+      Count: 1
+      Average: 5489ms
+    prepareEmbedItems:
+      Total: 6049ms
+      Count: 1
+      Average: 6049ms
+
+2025-07-01 16:34:36.319 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12426ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_69:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_71:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_70:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 15ms
+      Count: 1
+      Average: 15ms
+    openAIService_batchSummarize:
+      Total: 6653ms
+      Count: 1
+      Average: 6653ms
+    embeddingService_batch:
+      Total: 429ms
+      Count: 1
+      Average: 429ms
+    mongoService_addSummarize_73:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_72:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5326ms
+      Count: 1
+      Average: 5326ms
+    prepareEmbedItems:
+      Total: 6669ms
+      Count: 1
+      Average: 6669ms
+
+2025-07-01 16:34:37.082 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14311ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_57:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_56:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_55:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_54:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_58:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    openAIService_batchSummarize:
+      Total: 8758ms
+      Count: 1
+      Average: 8758ms
+    embeddingService_batch:
+      Total: 500ms
+      Count: 1
+      Average: 500ms
+    maskingService_batch:
+      Total: 5050ms
+      Count: 1
+      Average: 5050ms
+    prepareEmbedItems:
+      Total: 8760ms
+      Count: 1
+      Average: 8760ms
+
+2025-07-01 16:34:40.920 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 8147ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    mongoService_addSummarize_78:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_77:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_76:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5734ms
+      Count: 1
+      Average: 5734ms
+    mongoService_addSummarize_75:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_74:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 572ms
+      Count: 1
+      Average: 572ms
+    maskingService_batch:
+      Total: 1836ms
+      Count: 1
+      Average: 1836ms
+    prepareEmbedItems:
+      Total: 5737ms
+      Count: 1
+      Average: 5737ms
+
+2025-07-01 16:34:47.630 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12681ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_79:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_82:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_81:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_80:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 4910ms
+      Count: 1
+      Average: 4910ms
+    embeddingService_batch:
+      Total: 1324ms
+      Count: 1
+      Average: 1324ms
+    mongoService_addSummarize_83:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 6444ms
+      Count: 1
+      Average: 6444ms
+    prepareEmbedItems:
+      Total: 4912ms
+      Count: 1
+      Average: 4912ms
+
+2025-07-01 16:34:49.298 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 13637ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_88:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_87:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5219ms
+      Count: 1
+      Average: 5219ms
+    mongoService_addSummarize_86:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_85:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 250ms
+      Count: 1
+      Average: 250ms
+    mongoService_addSummarize_84:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8166ms
+      Count: 1
+      Average: 8166ms
+    prepareEmbedItems:
+      Total: 5220ms
+      Count: 1
+      Average: 5220ms
+
+2025-07-01 16:34:51.073 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14753ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_89:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_93:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_92:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_91:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6265ms
+      Count: 1
+      Average: 6265ms
+    mongoService_addSummarize_90:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 280ms
+      Count: 1
+      Average: 280ms
+    maskingService_batch:
+      Total: 8205ms
+      Count: 1
+      Average: 8205ms
+    prepareEmbedItems:
+      Total: 6266ms
+      Count: 1
+      Average: 6266ms
+
+2025-07-01 16:34:52.908 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 11988ms
+  Operations:
+    mongoService_addSummarize_29:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_100:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 1ms
+      Count: 1
+      Average: 1ms
+    mongoService_addSummarize_99:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_27:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 6092ms
+      Count: 1
+      Average: 6092ms
+    mongoService_addSummarize_31:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 686ms
+      Count: 1
+      Average: 686ms
+    maskingService_batch:
+      Total: 5206ms
+      Count: 1
+      Average: 5206ms
+    prepareEmbedItems:
+      Total: 6094ms
+      Count: 1
+      Average: 6094ms
+
+2025-07-01 16:34:56.772 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 9141ms
+  Operations:
+    mongoService_addSummarize_105:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_104:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_101:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_103:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_102:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5660ms
+      Count: 1
+      Average: 5660ms
+    embeddingService_batch:
+      Total: 374ms
+      Count: 1
+      Average: 374ms
+    maskingService_batch:
+      Total: 3104ms
+      Count: 1
+      Average: 3104ms
+    prepareEmbedItems:
+      Total: 5662ms
+      Count: 1
+      Average: 5662ms
+
+2025-07-01 16:34:59.082 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 21999ms
+  Operations:
+    elasticsearchService_indexBatch:
+      Total: 4035ms
+      Count: 1
+      Average: 4035ms
+    processResponsesAndSave:
+      Total: 353ms
+      Count: 1
+      Average: 353ms
+    mongoService_addSummarize_98:
+      Total: 351ms
+      Count: 1
+      Average: 351ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 8614ms
+      Count: 1
+      Average: 8614ms
+    mongoService_addSummarize_97:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_96:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    embeddingService_batch:
+      Total: 846ms
+      Count: 1
+      Average: 846ms
+    mongoService_addSummarize_95:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_94:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 8147ms
+      Count: 1
+      Average: 8147ms
+    prepareEmbedItems:
+      Total: 8970ms
+      Count: 1
+      Average: 8970ms
+
+2025-07-01 16:35:05.144 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 12234ms
+  Operations:
+    mongoService_addSummarize_116:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_118:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_117:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_119:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 5920ms
+      Count: 1
+      Average: 5920ms
+    embeddingService_batch:
+      Total: 1140ms
+      Count: 1
+      Average: 1140ms
+    mongoService_addSummarize_120:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 5173ms
+      Count: 1
+      Average: 5173ms
+    prepareEmbedItems:
+      Total: 5920ms
+      Count: 1
+      Average: 5920ms
+
+2025-07-01 16:35:05.520 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 14446ms
+  Operations:
+    mongoService_addSummarize_115:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_112:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_111:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_114:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_113:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 8000ms
+      Count: 1
+      Average: 8000ms
+    embeddingService_batch:
+      Total: 161ms
+      Count: 1
+      Average: 161ms
+    maskingService_batch:
+      Total: 6283ms
+      Count: 1
+      Average: 6283ms
+    prepareEmbedItems:
+      Total: 8001ms
+      Count: 1
+      Average: 8001ms
+
+2025-07-01 16:35:14.431 PERF_SUMMARY - Batch thread performance for 5 tickets: Performance Stats:
+  Total Duration: 25133ms
+  Operations:
+    mongoService_addSummarize_107:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_106:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    elasticsearchService_indexBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    processResponsesAndSave:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_109:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareMaskItems:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    mongoService_addSummarize_108:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    prepareSummarizationBatch:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    openAIService_batchSummarize:
+      Total: 19062ms
+      Count: 1
+      Average: 19062ms
+    embeddingService_batch:
+      Total: 1121ms
+      Count: 1
+      Average: 1121ms
+    mongoService_addSummarize_110:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    maskingService_batch:
+      Total: 4947ms
+      Count: 1
+      Average: 4947ms
+    prepareEmbedItems:
+      Total: 19063ms
+      Count: 1
+      Average: 19063ms
+
+2025-07-01 16:36:42.492 PERF_SUMMARY - === MAIN THREAD PERFORMANCE STATS ===
+2025-07-01 16:36:42.494 PERF_SUMMARY - Performance Stats:
+  Total Duration: 176151ms
+  Operations:
+    phase1_prepareBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    phase3_tripletProcessing:
+      Total: 18418ms
+      Count: 1
+      Average: 18418ms
+    phase3_finalFlush:
+      Total: 892ms
+      Count: 1
+      Average: 892ms
+    phase1_finalFlush:
+      Total: 722ms
+      Count: 1
+      Average: 722ms
+    phase3_prepareTripletBatches:
+      Total: 0ms
+      Count: 1
+      Average: 0ms
+    getAllSupportTickets:
+      Total: 579ms
+      Count: 1
+      Average: 579ms
+    phase1_batchProcessing:
+      Total: 87510ms
+      Count: 1
+      Average: 87510ms
+    phase2_clustering:
+      Total: 68025ms
+      Count: 1
+      Average: 68025ms
+
+2025-07-01 16:36:42.494 PERF_SUMMARY - === SERVICE TIMING SUMMARY ===
+2025-07-01 16:36:42.494 PERF_SUMMARY - Phase 1 (Batch Processing): 87510ms
+2025-07-01 16:36:42.494 PERF_SUMMARY - Phase 2 (Clustering): 68025ms
+2025-07-01 16:36:42.494 PERF_SUMMARY - Phase 3 (Triplet Processing): 18418ms
+2025-07-01 16:36:42.494 PERF_SUMMARY - MongoDB getAllSupportTickets: 579ms
+2025-07-01 16:36:42.494 PERF_SUMMARY - Final flush operations: 1614ms
+2025-07-01 16:36:42.494 PERF_SUMMARY - === END PERFORMANCE STATS ===

@@ -3,6 +3,8 @@ package com.support.analyzer.spring_server.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.support.analyzer.spring_server.dto.ElasticsearchSimilarInference;
+import com.support.analyzer.spring_server.dto.SummarizationRequest;
+import com.support.analyzer.spring_server.dto.SummarizationResponse;
 import com.support.analyzer.spring_server.entity.TicketTriplet;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -16,9 +18,12 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.util.retry.Retry;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class OpenAIService {
@@ -110,6 +115,8 @@ public class OpenAIService {
                     log.warn("Failed to generate comprehensive inference");
                     return null;
                 }
+
+
                 TicketTriplet triplet = new TicketTriplet();
 
                 try {
@@ -129,6 +136,178 @@ public class OpenAIService {
             }
 
 
+        });
+    }
+    public List<SummarizationResponse> summarizeMessagesBatch(List<SummarizationRequest> requests) {
+        return executeWithSemaphore(() -> {
+            try {
+                // Build a combined prompt for all tickets
+                StringBuilder batchPrompt = new StringBuilder();
+                batchPrompt.append("Summarize each of the following support ticket conversations into clear, concise paragraphs. " +
+                        "For each ticket, provide a technical summary capturing key issues, error messages, and solutions.\n\n");
+
+                // Add each ticket with a clear separator
+                for (int i = 0; i < requests.size(); i++) {
+                    batchPrompt.append("TICKET_").append(requests.get(i).getTicketId()).append(":\n");
+                    batchPrompt.append(requests.get(i).getContent()).append("\n\n");
+                }
+
+                batchPrompt.append("\nProvide summaries in JSON format as an array of objects,  without any markdown or code block formatting each with 'ticketId' and 'summary' fields. " +
+                        "Example format: [{\"ticketId\": \"TICKET_1\", \"summary\": \"...\"}, ...]");
+
+                String response = generateResponse(batchPrompt.toString());
+                if (response == null || response.isBlank()) {
+                    return requests.stream()
+                            .map(req -> SummarizationResponse.failure(req.getTicketId(), "Failed to generate summary"))
+                            .toList();
+                }
+
+                try {
+                    JsonNode root = new ObjectMapper().readTree(response);
+                    List<SummarizationResponse> results = new ArrayList<>();
+
+                    if (root.isArray()) {
+                        for (JsonNode item : root) {
+                            String ticketId = item.path("ticketId").asText().replace("TICKET_", "");
+                            String summary = item.path("summary").asText();
+
+                            if (summary != null && !summary.isBlank()) {
+                                results.add(SummarizationResponse.success(ticketId, summary));
+                            } else {
+                                results.add(SummarizationResponse.failure(ticketId, "Empty summary received"));
+                            }
+                        }
+                    }
+
+                    // Handle any missing tickets
+                    Set<String> processedIds = results.stream()
+                            .map(SummarizationResponse::getTicketId)
+                            .collect(Collectors.toSet());
+
+                    requests.stream()
+                            .map(SummarizationRequest::getTicketId)
+                            .filter(id -> !processedIds.contains(id))
+                            .forEach(id -> results.add(SummarizationResponse.failure(id, "No summary generated")));
+
+                    return results;
+
+                } catch (Exception e) {
+                    log.error("Failed to parse batch summaries: {}", e.getMessage());
+                    return requests.stream()
+                            .map(req -> SummarizationResponse.failure(req.getTicketId(), "Failed to parse summary"))
+                            .toList();
+                }
+            } catch (Exception e) {
+                log.error("Batch summarization error: {}", e.getMessage());
+                return requests.stream()
+                        .map(req -> SummarizationResponse.failure(req.getTicketId(), "Summarization failed"))
+                        .toList();
+            }
+        });
+    }
+
+
+    public List<TicketTriplet> generateTicketTripletsBatch(List<TripletBatchRequestItem> requests) {
+        return executeWithSemaphore(() -> {
+            try {
+                // Construct prompt for batch triplet inference
+                StringBuilder batchPrompt = new StringBuilder();
+                batchPrompt.append("""
+                    You are a technical support analyst.
+
+                    For each of the following summarized support tickets, identify:
+                    - The key technical issue
+                    - The root cause (RCA)
+                    - The recommended solution
+
+                    Guidelines:
+                    - The issue may also be an enhancement request — identify that if so.
+                    - Provide concise and clear RCA and solution in plain text.
+                    - Avoid arrays or extra formatting.
+                    - DO NOT wrap the response in markdown or code blocks.
+                    - Provide the final output as a JSON array of objects with fields:
+                      ticketId, issue, rca, solution.
+
+                    Format:
+                    [
+                      {"ticketId": "TICKET_1", "issue": "...", "rca": "...", "solution": "..."},
+                      ...
+                    ]
+
+                    Summaries:
+                    """);
+
+                for (TripletBatchRequestItem req : requests) {
+                    batchPrompt.append("TICKET_").append(req.getTicketId()).append(":\n");
+                    batchPrompt.append(req.getSummary()).append("\n\n");
+                }
+
+                String response = generateResponse(batchPrompt.toString());
+                if (response == null || response.isBlank()) {
+                    return requests.stream()
+                            .map(req -> {
+                                TicketTriplet t = new TicketTriplet();
+                                t.setTicketId(req.getTicketId());
+                                return t;
+                            })
+                            .toList();
+                }
+
+                try {
+                    JsonNode root = new ObjectMapper().readTree(response);
+                    List<TicketTriplet> triplets = new ArrayList<>();
+
+                    if (root.isArray()) {
+                        for (JsonNode item : root) {
+                            String ticketId = item.path("ticketId").asText().replace("TICKET_", "");
+                            String issue = item.path("issue").asText();
+                            String rca = item.path("rca").asText();
+                            String solution = item.path("solution").asText();
+
+                            if (!issue.isBlank() && !rca.isBlank() && !solution.isBlank()) {
+                                TicketTriplet t = new TicketTriplet();
+                                t.setTicketId(ticketId);
+                                t.setIssue(issue);
+                                t.setRca(rca);
+                                t.setSolution(solution);
+                                triplets.add(t);
+                            }
+                        }
+                    }
+
+                    // Add missing IDs with empty triplet
+                    Set<String> processedIds = triplets.stream()
+                            .map(TicketTriplet::getTicketId)
+                            .collect(Collectors.toSet());
+
+                    requests.stream()
+                            .map(TripletBatchRequestItem::getTicketId)
+                            .filter(id -> !processedIds.contains(id))
+                            .forEach(id -> {
+                                TicketTriplet t = new TicketTriplet();
+                                t.setTicketId(id);
+                                triplets.add(t);
+                            });
+
+                    return triplets;
+
+                } catch (Exception e) {
+                    log.error("Failed to parse batch triplet response: {}", e.getMessage());
+                    return requests.stream().map(req -> {
+                        TicketTriplet t = new TicketTriplet();
+                        t.setTicketId(req.getTicketId());
+                        return t;
+                    }).toList();
+                }
+
+            } catch (Exception e) {
+                log.error("Batch triplet generation error: {}", e.getMessage());
+                return requests.stream().map(req -> {
+                    TicketTriplet t = new TicketTriplet();
+                    t.setTicketId(req.getTicketId());
+                    return t;
+                }).toList();
+            }
         });
     }
 
@@ -153,6 +332,8 @@ public class OpenAIService {
                     log.warn("Failed to generate RCA for ticket: {}", ticketId);
                     return null;
                 }
+//                log.info("Generated response for ticket {}: {}", ticketId, response);
+
                 TicketTriplet triplet = new TicketTriplet();
                 try {
                     JsonNode root = new ObjectMapper().readTree(response);
@@ -201,7 +382,7 @@ public class OpenAIService {
             String requestBody = """
             {
                 "model": "gpt-4",
-                "max_tokens": 4096,
+                "max_tokens": 16000,
                 "client_identifier": "spr-ui-dev",
                 "messages": [
                     {
@@ -266,4 +447,18 @@ public class OpenAIService {
     public boolean isAtCapacity() {
         return requestSemaphore.availablePermits() == 0;
     }
+
+
+static class TripletBatchRequestItem {
+    private String ticketId;
+    private String summary;
+
+    public TripletBatchRequestItem(String ticketId, String summary) {
+        this.ticketId = ticketId;
+        this.summary = summary;
+    }
+
+    public String getTicketId() { return ticketId; }
+    public String getSummary() { return summary; }
+}
 }

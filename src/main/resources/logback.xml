@@ -1,24 +1,55 @@
 <configuration>
 
+    <!-- Console Appender -->
     <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
+    <!-- Main Application Log File -->
     <appender name ="myFileAppender" class="ch.qos.logback.core.FileAppender">
         <file>logs/SupportTicket.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
-
     </appender>
 
+
+
+    <!-- Performance Summary Log File -->
+    <appender name="performanceSummaryAppender" class="ch.qos.logback.core.FileAppender">
+        <file>logs/performance-summary.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
     <root level="INFO">
         <appender-ref ref="myConsoleAppender" />
     </root>
 
+    <!-- Main application logger - goes to SupportTicket.log -->
     <logger name="com.support.analyzer.spring_server" level="INFO" additivity="false">
         <appender-ref ref="myFileAppender" />
     </logger>
+
+    <!-- Performance tracking logger - goes to performance.log -->
+    <logger name="com.support.analyzer.spring_server.util" level="DEBUG" additivity="false">
+        <appender-ref ref="performanceFileAppender" />
+        <appender-ref ref="myConsoleAppender" />
+    </logger>
+
+    <!-- SupportTicketIngestService - enable DEBUG for detailed thread performance -->
+    <logger name="com.support.analyzer.spring_server.service.SupportTicketIngestService" level="DEBUG" additivity="false">
+        <appender-ref ref="myFileAppender" />
+        <appender-ref ref="performanceFileAppender" />
+    </logger>
+
+    <!-- Specific logger for performance summaries -->
+    <logger name="PERF_SUMMARY" level="INFO" additivity="false">
+        <appender-ref ref="performanceSummaryAppender" />
+    </logger>
+
 </configuration>

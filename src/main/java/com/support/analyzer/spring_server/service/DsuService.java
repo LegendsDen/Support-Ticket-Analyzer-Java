@@ -26,30 +26,47 @@ public class DsuService {
     private static class DSU {
         private Map<String, String> parent;
         private Map<String, Integer> size;
+        private int numComponents; // Track number of separate components
 
         public DSU(List<String> tickets) {
             parent = new HashMap<>();
             size = new HashMap<>();
+            numComponents = tickets.size();
 
             for (String ticket : tickets) {
-                parent.put(ticket, ticket);
-                size.put(ticket, 1);
+                parent.put(ticket, ticket); // Each node is its own parent initially
+                size.put(ticket, 1);        // Each component has size 1 initially
             }
         }
 
+
         public String find(String x) {
+            // Check if x exists in our DSU
+            if (!parent.containsKey(x)) {
+                throw new IllegalArgumentException("Ticket " + x + " not found in DSU");
+            }
+
+            // If x is not its own parent, recursively find the root and compress path
             if (!parent.get(x).equals(x)) {
-                parent.put(x, find(parent.get(x))); // Path compression
+                // Path compression: make x point directly to the root
+                // This line ONLY overwrites the value for key 'x', not other entries
+                parent.put(x, find(parent.get(x)));
             }
             return parent.get(x);
         }
 
-        public void union(String x, String y) {
+        public boolean union(String x, String y) {
+            // Validate inputs
+            if (!parent.containsKey(x) || !parent.containsKey(y)) {
+                throw new IllegalArgumentException("One or both tickets not found in DSU");
+            }
+
             String rootX = find(x);
             String rootY = find(y);
 
+            // Already in same component
             if (rootX.equals(rootY)) {
-                return;
+                return false; // No union performed
             }
 
             // Union by size - attach smaller tree under root of larger tree
@@ -57,12 +74,19 @@ public class DsuService {
             int sizeY = size.get(rootY);
 
             if (sizeX < sizeY) {
+                // Make rootY the parent of rootX
                 parent.put(rootX, rootY);
-                size.put(rootY, sizeX + sizeY); // Update size of the new root
+                size.put(rootY, sizeX + sizeY);
+                size.remove(rootX); // Clean up - rootX is no longer a root
             } else {
+                // Make rootX the parent of rootY
                 parent.put(rootY, rootX);
-                size.put(rootX, sizeX + sizeY); // Update size of the new root
+                size.put(rootX, sizeX + sizeY);
+                size.remove(rootY); // Clean up - rootY is no longer a root
             }
+
+            numComponents--; // We merged two components into one
+            return true; // Union was performed
         }
 
         public Map<String, List<String>> getClusters() {
@@ -106,10 +130,11 @@ public class DsuService {
                 return Collections.emptyList();
             }
 
-            log.info("Found {} tickets to cluster", allTicketIds);
+
 
             // Initialize DSU
             DSU dsu = new DSU(allTicketIds);
+
 
             // For each ticket, find k-nearest neighbors using KNN and union if similarity > threshold
             int processedCount = 0;
@@ -118,13 +143,14 @@ public class DsuService {
             for (String ticketId : allTicketIds) {
                 try {
                     List<ElasticsearchSimilarTicket> neighbors = elasticsearchService.findKNearestNeighbors(ticketId, k);
-                    log.info("Processing ticket {} with {} neighbors", ticketId, neighbors.size());
-
-                    for (    ElasticsearchSimilarTicket neighbor : neighbors) {
-                        log.info("Ticket {} is similar to {} with similarity {}", ticketId, neighbor.getTicketId(), neighbor.getSimilarity());
+//                    log.info("Processing ticket {} with {},{} neighbors", ticketId, neighbors, neighbors.size());
+                    String root1 = dsu.find(ticketId);
+                    for (ElasticsearchSimilarTicket neighbor : neighbors) {
+//                        log.info("Ticket {} is similar to {} with similarity {}", ticketId, neighbor.getTicketId(), neighbor.getSimilarity());
                         if (neighbor.getSimilarity() >= SIMILARITY_THRESHOLD) {
-                            // Check if they're already in the same cluster before union
-                            if (!dsu.find(ticketId).equals(dsu.find(neighbor.getTicketId()))) {
+                            String root2 = dsu.find(neighbor.getTicketId());
+
+                            if (root1 != null && root2 != null && !root1.equals(root2)) {
                                 dsu.union(ticketId, neighbor.getTicketId());
                                 unionsPerformed++;
                                 log.info("United {} and {} with cosine similarity {}",
@@ -139,7 +165,7 @@ public class DsuService {
                     }
 
                 } catch (Exception e) {
-                    log.error("Error processing ticket {}: {}", ticketId, e.getMessage());
+                    log.error("Error processing ticket {}"+e, ticketId, e);
                 }
             }
 
