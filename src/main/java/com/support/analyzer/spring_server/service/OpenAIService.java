@@ -20,6 +20,7 @@ import reactor.util.retry.Retry;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -379,19 +380,16 @@ public class OpenAIService {
 
     public String generateResponse(String prompt) {
         try {
-            String requestBody = """
-            {
-                "model": "gpt-4",
-                "max_tokens": 16000,
-                "client_identifier": "spr-ui-dev",
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": %s
-                    }
-                ]
-            }
-            """.formatted(jsonEscape(prompt));
+            ObjectMapper mapper = new ObjectMapper();
+            String requestBody = mapper.writeValueAsString(Map.of(
+                    "model", "gpt-4",
+                    "max_tokens", 16000,
+                    "client_identifier", "spr-ui-dev",
+                    "messages", List.of(Map.of(
+                            "role", "user",
+                            "content", prompt
+                    ))
+            ));
 
             return openAiClient.post()
                     .contentType(MediaType.APPLICATION_JSON)
@@ -404,18 +402,20 @@ public class OpenAIService {
                                     || ((WebClientResponseException) throwable).getStatusCode().value() == 400))
                             .onRetryExhaustedThrow((retryBackoffSpec, retrySignal) -> {
                                 WebClientResponseException ex = (WebClientResponseException) retrySignal.failure();
-                                log.error("Failed after 3 retries. Status: {}, Response: {}",
+                                log.error("Failed after retries. Status: {}, Response: {}",
                                         ex.getStatusCode(), ex.getResponseBodyAsString());
                                 return retrySignal.failure();
                             }))
                     .doOnError(error -> log.error("Request failed: {}", error.getMessage()))
                     .map(this::extractSummaryFromResponse)
                     .block();
+
         } catch (Exception e) {
-            log.error("OpenAI Error: {}", e.getMessage());
+            log.error("OpenAI Error:", e);
             return null;
         }
     }
+
 
     private String extractSummaryFromResponse(String response) {
         try {

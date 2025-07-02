@@ -4,6 +4,8 @@ import com.support.analyzer.spring_server.entity.TicketTriplet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class TicketTripletWithDetails extends TicketTriplet {
@@ -13,12 +15,21 @@ public class TicketTripletWithDetails extends TicketTriplet {
     public static class InferenceDetails {
         private String maskedResponse;
         private String summary;
+        private List<SimilarTicketInfo> similarTickets;
     }
 
-    public TicketTripletWithDetails(TicketTriplet triplet, String maskedResponse, String summary) {
+    @Data
+    public static class SimilarTicketInfo {
+        private String rca;
+        private String issue;
+        private String solution;
+    }
+
+    public TicketTripletWithDetails(TicketTriplet triplet, String maskedResponse, String summary, List<SimilarTicketInfo> similarTickets) {
         super(triplet.getTicketId(), triplet.getRca(), triplet.getIssue(), triplet.getSolution());
         this.details = new InferenceDetails();
         this.details.maskedResponse = maskedResponse;
         this.details.summary = summary;
+        this.details.similarTickets = similarTickets;
     }
 }

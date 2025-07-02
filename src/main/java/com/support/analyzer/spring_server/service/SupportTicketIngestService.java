@@ -96,6 +96,12 @@ public class SupportTicketIngestService {
                     List<FlaskMaskedResponseItem> maskedResults = maskingService.getMaskedMessagesBatch(maskItems);
                     threadPerfStats.markOperationEnd("maskingService_batch");
 
+                    // VALIDATION: Check if masking results are available
+                    if (maskedResults == null || maskedResults.isEmpty()) {
+                        log.error("Masking service returned null or empty results for batch. Skipping batch processing.");
+                        return;
+                    }
+
                     log.info("Masked {} tickets", maskedResults.size());
 
                     threadPerfStats.markOperationStart("prepareEmbedItems");
@@ -107,12 +113,21 @@ public class SupportTicketIngestService {
                         String ticketId = item.getTicketId();
                         List<String> maskedMessages = item.getMaskedMessages();
                         log.info("Ticket {} masked messages: {}", ticketId, maskedMessages);
-                        if (maskedMessages == null || maskedMessages.isEmpty()) continue;
+                        if (maskedMessages == null || maskedMessages.isEmpty()) {
+                            log.warn("Skipping ticket {} - no masked messages available", ticketId);
+                            continue;
+                        }
 
                         String joinedMasked = String.join("\n", maskedMessages);
                         summarizationRequests.add(new SummarizationRequest(ticketId, joinedMasked));
                     }
                     threadPerfStats.markOperationEnd("prepareSummarizationBatch");
+
+                    // VALIDATION: Check if we have any valid summarization requests
+                    if (summarizationRequests.isEmpty()) {
+                        log.error("No valid summarization requests after masking. Skipping batch processing.");
+                        return;
+                    }
 
                     log.info("Sending {} tickets for batch summarization", summarizationRequests.size());
 
@@ -142,6 +157,12 @@ public class SupportTicketIngestService {
                     }
                     threadPerfStats.markOperationEnd("processResponsesAndSave");
 
+                    // VALIDATION: Check if we have items to embed
+                    if (embedItems.isEmpty()) {
+                        log.error("No valid items for embedding after summarization. Skipping embedding and indexing.");
+                        return;
+                    }
+
                     log.info("Successfully processed {} out of {} summaries", embedItems.size(), summarizationRequests.size());
                     threadPerfStats.markOperationEnd("prepareEmbedItems");
 
@@ -149,11 +170,22 @@ public class SupportTicketIngestService {
                     List<FlaskEmbeddingResponseItem> embeddingResults = embeddingService.getEmbeddingsBatch(embedItems);
                     threadPerfStats.markOperationEnd("embeddingService_batch");
 
+                    // VALIDATION: Check if embedding results are available
+                    if (embeddingResults == null || embeddingResults.isEmpty()) {
+                        log.error("Embedding service returned null or empty results for batch. Skipping Elasticsearch indexing.");
+                        return;
+                    }
+
                     threadPerfStats.markOperationStart("elasticsearchService_indexBatch");
                     for (FlaskEmbeddingResponseItem item : embeddingResults) {
+                        // Additional validation for individual embedding items
+                        if (item.getTicketId() == null || item.getEmbedding() == null || item.getEmbedding().isEmpty()) {
+                            log.warn("Skipping indexing for ticket {} - invalid embedding data", item.getTicketId());
+                            continue;
+                        }
+
                         elasticsearchService.indexEmbedding(item.getTicketId(), item.getEmbedding());
                         allTicketIds.add(item.getTicketId());
-
                     }
                     threadPerfStats.markOperationEnd("elasticsearchService_indexBatch");
 
@@ -162,7 +194,7 @@ public class SupportTicketIngestService {
                             batch.size(), threadPerfStats.toFormattedString());
 
                 } catch (Exception e) {
-                    log.error("Batch processing failed: {}", e.getMessage());
+                    log.error("Batch processing failed: {}", e.getMessage(), e);
                 }
             });
             ticketFutures.add(future);
@@ -190,6 +222,13 @@ public class SupportTicketIngestService {
         List<String> representatives = dsuService.buildClustersAndGetRepresentatives(allTicketIds, 5);
         PerfTracker.out("phase2_clustering");
 
+        // VALIDATION: Check if clustering produced representatives
+        if (representatives == null || representatives.isEmpty()) {
+            log.error("Clustering did not produce any representatives. Skipping Phase 3.");
+            long totalDuration = System.currentTimeMillis() - startTime;
+            log.info("Processing stopped after Phase 2. Processed {} tickets in {} ms", allTicketIds.size(), totalDuration);
+            return;
+        }
 
         // PHASE 3: Triplet Generation + Batch Embedding
         PerfTracker.in("phase3_prepareTripletBatches");
@@ -217,16 +256,40 @@ public class SupportTicketIngestService {
                         }
                     }
 
-                    List<TicketTriplet> triplets = openAIService.generateTicketTripletsBatch(tripletRequestItems);
-                    log.info("Generated {} triplets for representatives: {}", triplets.size(), repBatch);
+                    // VALIDATION: Check if we have valid triplet request items
+                    if (tripletRequestItems.isEmpty()) {
+                        log.error("No valid triplet request items for batch: {}. Skipping triplet generation.", repBatch);
+                        return;
+                    }
 
+                    List<TicketTriplet> triplets = openAIService.generateTicketTripletsBatch(tripletRequestItems);
+
+                    // VALIDATION: Check if triplet generation was successful
+                    if (triplets == null || triplets.isEmpty()) {
+                        log.error("Triplet generation returned null or empty results for batch: {}. Skipping embedding.", repBatch);
+                        return;
+                    }
+
+                    log.info("Generated {} triplets for representatives: {}", triplets.size(), repBatch);
 
                     List<EmbedBatchRequest.EmbedItem> embedItems = triplets.stream()
                             .filter(t -> t.getTicketId() != null && t.getIssue() != null)
                             .map(t -> new EmbedBatchRequest.EmbedItem(t.getTicketId(), t.getIssue()))
                             .collect(Collectors.toList());
 
+                    // VALIDATION: Check if we have items to embed
+                    if (embedItems.isEmpty()) {
+                        log.error("No valid items for embedding after triplet generation for batch: {}. Skipping embedding.", repBatch);
+                        return;
+                    }
+
                     List<FlaskEmbeddingResponseItem> embeddingResults = embeddingService.getEmbeddingsBatch(embedItems);
+
+                    // VALIDATION: Check if embedding results are available
+                    if (embeddingResults == null || embeddingResults.isEmpty()) {
+                        log.error("Embedding service returned null or empty results for triplet batch: {}. Skipping indexing.", repBatch);
+                        return;
+                    }
 
                     for (TicketTriplet triplet : triplets) {
                         mongoService.addTicketTriplet(triplet);
@@ -236,19 +299,20 @@ public class SupportTicketIngestService {
                                 .map(FlaskEmbeddingResponseItem::getEmbedding)
                                 .orElse(null);
 
-                        if (embedding != null) {
+                        if (embedding != null && !embedding.isEmpty()) {
                             elasticsearchService.indexTicketTripletWithEmbedding(triplet, embedding);
+                        } else {
+                            log.warn("No embedding found for triplet ticket ID: {}. Skipping Elasticsearch indexing.", triplet.getTicketId());
                         }
                     }
 
                     processedReps.addAndGet(repBatch.size());
                 } catch (Exception e) {
-                    log.error("Triplet batch processing failed: {}", e.getMessage());
+                    log.error("Triplet batch processing failed for batch {}: {}", repBatch, e.getMessage(), e);
                 }
             });
             tripletFutures.add(future);
         }
-
 
         for (Future<?> f : tripletFutures) {
             try {
@@ -282,7 +346,6 @@ public class SupportTicketIngestService {
             perfLog.info("=== END PERFORMANCE STATS ===");
         }
     }
-
 
     private void logServiceSummary(PerfStats stats) {
         Map<String, Long> operationTimes = stats.getOperationTimes();

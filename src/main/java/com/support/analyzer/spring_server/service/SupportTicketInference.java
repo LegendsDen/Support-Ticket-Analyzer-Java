@@ -12,9 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-
-
 @Service
 public class SupportTicketInference {
     private static final Logger log = LoggerFactory.getLogger(SupportTicketInference.class);
@@ -36,7 +33,8 @@ public class SupportTicketInference {
         this.maskingService = maskingService;
         this.openAIService = openAIService;
         this.embeddingService = embeddingService;
-        this.elasticsearchService = elasticsearchService;}
+        this.elasticsearchService = elasticsearchService;
+    }
 
     public TicketTripletWithDetails inferSupportTicket(String ticketId) {
         try {
@@ -88,37 +86,54 @@ public class SupportTicketInference {
 
             // Step 5: Find k-nearest neighbors in triplets index
             List<ElasticsearchSimilarInference> similarTriplets = elasticsearchService.findSimilarTriplets(embedding, K_NEAREST_NEIGHBORS);
-            log.info("Found {} similar triplets for ticket: {}", similarTriplets, ticketId);
+            log.info("Found {} similar triplets for ticket: {}", similarTriplets.size(), ticketId);
             if (similarTriplets.isEmpty()) {
                 log.warn("No similar triplets found for ticket: {}", ticketId);
                 return null;
             }
 
-            log.info("Found {} similar triplets for ticket: {}", similarTriplets, ticketId);
+            // Step 6: Convert ElasticsearchSimilarInference to SimilarTicketInfo for response
+            List<TicketTripletWithDetails.SimilarTicketInfo> similarTicketInfos = similarTriplets.stream()
+                    .map(triplet -> {
+                        TicketTripletWithDetails.SimilarTicketInfo info = new TicketTripletWithDetails.SimilarTicketInfo();
+                        info.setRca(triplet.getRca());
+                        info.setIssue(triplet.getIssue());
+                        info.setSolution(triplet.getSolution());
+                        // If you have similarity score available, set it here
+                        // info.setSimilarity(triplet.getSimilarityScore());
+                        return info;
+                    })
+                    .collect(Collectors.toList());
 
-            // Step 6: Generate complete inference using OpenAI with similar triplets context
-            TicketTriplet inference = openAIService.generateCompleteInference(ticketId,joinedMasked, similarTriplets);
-            mongoService.addTicketTriplet(inference);
-            mongoService.finalFlush();
+            log.info("Converted {} similar triplets to SimilarTicketInfo objects", similarTicketInfos.size());
 
-            TicketTripletWithDetails enhancedInference = new TicketTripletWithDetails(
-                    inference,
-                    joinedMasked,
-                    summary
-            );
+            // Step 7: Generate complete inference using OpenAI with similar triplets context
+            TicketTriplet inference = openAIService.generateCompleteInference(ticketId, joinedMasked, similarTriplets);
+
             if (inference == null) {
                 log.warn("Failed to generate complete inference for ticket: {}", ticketId);
                 return null;
             }
 
-            log.info("Successfully generated inference for ticket: {}", ticketId);
+            // Save the inference
+            mongoService.addTicketTriplet(inference);
+            mongoService.finalFlush();
+
+            // Step 8: Create enhanced response with similar tickets information
+            TicketTripletWithDetails enhancedInference = new TicketTripletWithDetails(
+                    inference,
+                    joinedMasked,
+                    summary,
+                    similarTicketInfos
+            );
+
+            log.info("Successfully generated inference for ticket: {} with {} similar tickets",
+                    ticketId, similarTicketInfos.size());
             return enhancedInference;
 
         } catch (Exception e) {
-            log.error("Error during inference for ticket {}: {}", ticketId, e, e);
-            throw new RuntimeException("Failed to infer support ticket: " + e, e);
+            log.error("Error during inference for ticket {}: {}", ticketId, e.getMessage(), e);
+            throw new RuntimeException("Failed to infer support ticket: " + e.getMessage(), e);
         }
     }
-
-
 }
