@@ -190,17 +190,10 @@ public class DsuService {
 
     private List<String> selectClusterRepresentatives(Map<String, List<String>> clusters, DSU dsu) {
         List<String> representatives = new ArrayList<>();
-
         for (Map.Entry<String, List<String>> entry : clusters.entrySet()) {
             String clusterRoot = entry.getKey();
-//            List<String> clusterMembers = entry.getValue();
             representatives.add(clusterRoot);
         }
-
         return representatives;
     }
-
-
-
-
 }

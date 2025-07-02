@@ -79,7 +79,6 @@ public class SupportTicketIngestService {
             Future<?> future = ticketExecutor.submit(() -> {
                 // Each thread gets its own performance tracker
                 PerfStats threadPerfStats = new PerfStats();
-
                 try {
                     threadPerfStats.markOperationStart("prepareMaskItems");
                     List<MaskBatchRequest.MaskItem> maskItems = batch.stream()
@@ -91,12 +90,13 @@ public class SupportTicketIngestService {
                             .collect(Collectors.toList());
                     threadPerfStats.markOperationEnd("prepareMaskItems");
 
+                    log.info("Masking {} tickets", maskItems.size());
 
                     threadPerfStats.markOperationStart("maskingService_batch");
                     List<FlaskMaskedResponseItem> maskedResults = maskingService.getMaskedMessagesBatch(maskItems);
                     threadPerfStats.markOperationEnd("maskingService_batch");
 
-
+                    log.info("Masked {} tickets", maskedResults.size());
 
                     threadPerfStats.markOperationStart("prepareEmbedItems");
 
