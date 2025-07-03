@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.util.retry.Retry;
 
@@ -107,6 +108,7 @@ public class OpenAIService {
                         "analyze and provide: issue identification, root cause analysis, and recommended solution. " +
                         "The given issue may be an enhancement so take that into account. Also give clear RCA and solution with bullet points. Make sure all the fields are text only and not an array."+
                         "Return in json format without any markdown or code block formatting with fields: rca, issue, solution."+
+                        "Use language of words familiar to the original message and similar tickets.\n\n" +
                         "Original Message:\n" + originalMessage + "\n\n" + tripletContext;
 
                 String response = generateResponse(comprehensivePrompt);
@@ -396,16 +398,26 @@ public class OpenAIService {
                     .bodyValue(requestBody)
                     .retrieve()
                     .bodyToMono(String.class)
-                    .retryWhen(Retry.backoff(5, Duration.ofSeconds(2))
-                            .filter(throwable -> throwable instanceof WebClientResponseException
-                                    && (((WebClientResponseException) throwable).getStatusCode().value() == 429
-                                    || ((WebClientResponseException) throwable).getStatusCode().value() == 400))
+                    .retryWhen(Retry.backoff(3, Duration.ofSeconds(2))
+                            .filter(throwable ->
+                                    (throwable instanceof WebClientResponseException &&
+                                            (((WebClientResponseException) throwable).getStatusCode().value() == 429 ||
+                                                    ((WebClientResponseException) throwable).getStatusCode().value() == 400)) ||
+                                            (throwable instanceof WebClientRequestException &&
+                                                    throwable.getCause() instanceof java.net.SocketException)
+                            )
                             .onRetryExhaustedThrow((retryBackoffSpec, retrySignal) -> {
-                                WebClientResponseException ex = (WebClientResponseException) retrySignal.failure();
-                                log.error("Failed after retries. Status: {}, Response: {}",
-                                        ex.getStatusCode(), ex.getResponseBodyAsString());
-                                return retrySignal.failure();
+                                Throwable ex = retrySignal.failure();
+                                if (ex instanceof WebClientResponseException wcre) {
+                                    log.error("Failed after retries. Status: {}, Response: {}",
+                                            wcre.getStatusCode(), wcre.getResponseBodyAsString());
+                                } else {
+                                    log.error("Failed after retries. Exception: {}", ex.toString());
+                                }
+                                return ex;
                             }))
+
+
                     .doOnError(error -> log.error("Request failed: {}", error.getMessage()))
                     .map(this::extractSummaryFromResponse)
                     .block();
@@ -449,7 +461,7 @@ public class OpenAIService {
     }
 
 
-static class TripletBatchRequestItem {
+    static class TripletBatchRequestItem {
     private String ticketId;
     private String summary;
 

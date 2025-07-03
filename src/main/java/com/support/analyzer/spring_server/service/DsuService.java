@@ -4,6 +4,7 @@ import com.support.analyzer.spring_server.dto.ElasticsearchSimilarTicket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -11,7 +12,8 @@ import java.util.*;
 @Service
 public class DsuService {
     private static final Logger log = LoggerFactory.getLogger(DsuService.class);
-    private static final double SIMILARITY_THRESHOLD = 0.8;
+    @Value("${dsu.similarity.threshold}")
+    private double SIMILARITY_THRESHOLD;
 
     private final ElasticsearchService elasticsearchService;
 
