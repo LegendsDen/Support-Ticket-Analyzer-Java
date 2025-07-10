@@ -69,10 +69,10 @@ public class OpenAIService {
             You are a technical support analyst. Summarize the following conversation logs into a single clear paragraph.
 
             Guidelines:
-            - Capture key technical issues, error messages, and system behaviors.
+            - Capture key technical issues, error messages, and system behaviors in detail.
             - Include any important context or user actions that help identify the root cause.
             - Exclude greetings, sign-offs, and irrelevant chit-chat.
-            - Write in concise, professional, and technical language suitable for internal ticket notes.
+            - Write in detail, professional, and technical language suitable for internal ticket notes.
 
             Conversation Logs:
             %s
@@ -106,10 +106,15 @@ public class OpenAIService {
 
                 String comprehensivePrompt = "Based on the following original support ticket message and similar resolved tickets, " +
                         "analyze and provide: issue identification, root cause analysis, and recommended solution. " +
-                        "The given issue may be an enhancement so take that into account. Also give clear RCA and solution with bullet points. Make sure all the fields are text only and not an array."+
-                        "Return in json format without any markdown or code block formatting with fields: rca, issue, solution."+
-                        "Use language of words familiar to the original message and similar tickets.\n\n" +
+                        "The given issue may be an enhancement so take that into account. " +
+                        "Also give clear and detailed RCA and solution using numbered points (1., 2., 3., etc.). " +
+                        "If a point has multiple sentences, write them in one block — do not use \\n or newline characters. " +
+                        "Ensure output is valid JSON, with all fields as plain strings only (no markdown, no code blocks, no arrays). " +
+                        "Return only the following fields: rca, issue, solution." +
+
+                        "\n\nUse language of words familiar to the original message and similar tickets.\n\n" +
                         "Original Message:\n" + originalMessage + "\n\n" + tripletContext;
+
 
                 String response = generateResponse(comprehensivePrompt);
                 log.info("Generated comprehensive inference response: {}", response);
@@ -225,7 +230,7 @@ public class OpenAIService {
 
                     Guidelines:
                     - The issue may also be an enhancement request — identify that if so.
-                    - Provide concise and clear RCA and solution in plain text.
+                    - Provide detailed and clear RCA and solution in plain text.
                     - Avoid arrays or extra formatting.
                     - DO NOT wrap the response in markdown or code blocks.
                     - Provide the final output as a JSON array of objects with fields:

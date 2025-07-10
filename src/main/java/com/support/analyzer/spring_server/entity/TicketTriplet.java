@@ -13,7 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TicketTriplet {
     @Id
     private String ticketId;
-    private String rca;
     private String issue;
+    private String rca;
+
     private String solution;
 }

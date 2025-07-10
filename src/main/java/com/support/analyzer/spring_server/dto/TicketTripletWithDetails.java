@@ -20,13 +20,15 @@ public class TicketTripletWithDetails extends TicketTriplet {
 
     @Data
     public static class SimilarTicketInfo {
-        private String rca;
         private String issue;
+        private String rca;
         private String solution;
+
     }
 
     public TicketTripletWithDetails(TicketTriplet triplet, String maskedResponse, String summary, List<SimilarTicketInfo> similarTickets) {
-        super(triplet.getTicketId(), triplet.getRca(), triplet.getIssue(), triplet.getSolution());
+
+        super(triplet.getTicketId(), triplet.getIssue(), triplet.getRca(), triplet.getSolution());
         this.details = new InferenceDetails();
         this.details.maskedResponse = maskedResponse;
         this.details.summary = summary;
